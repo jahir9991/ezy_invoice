@@ -1,0 +1,174 @@
+<div class="semi-medium-panel  horizontal-scroll">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-4 col-lg-4">
+                <div class="form-group select-page-size-wrap ">
+                    <label>Rows on page
+                        <select id="selectpicker" class=" form-control selectpicker show-tick " data-style="btn-primary"
+                                title="Rows on page" selectpicker
+                                dis="true"
+                                ng-model="expenses.smartTablePageSize" ng-options="i for i in expenses.pages">
+                        </select>
+                    </label>
+                    <button class="btn btn-warning" ng-click="expenses.refreshExpenseList()"><i
+                            class="fa fa-refresh"></i></button>
+
+                </div>
+
+            </div>
+
+            <div class="col-md-4  col-lg-4">
+                <br>
+                <button class="btn bg-facebook ">Search Expenses: {{expenses.totalExpenses}}</button>
+
+            </div>
+            <div class="col-md-4 col-lg-4">
+                <br>
+                <button class="btn btn-info pull-right">Total Expenses: {{::expenses.totalExpenses}}</button>
+
+            </div>
+        </div>
+    </div>
+    <legend></legend>
+    <table class="table table-hover  table-responsive" st-pipe="expenses.callServer" st-table="expenses.displayed">
+        <thead>
+        <tr class="sortable">
+            <th st-sort="id">ID</th>
+            <th st-sort="voucher_number">Voucher #</th>
+
+            <th st-sort="date">Date</th>
+            <th st-sort="supplier_id">Supplier</th>
+
+            <th st-sort="paid_price">Paid Amount</th>
+
+        </tr>
+        <tr>
+
+            <th>
+                <div class="form-group form-group-sm ">
+                    <input ng-model="expenses.expenseSearch.id"
+                           class="input input-sm form-control form-control-rounded search-input"
+                           st-search="id"/>
+                </div>
+            </th>
+            <th>
+                <div class="form-group form-group-sm ">
+                    <input ng-model="expenses.expenseSearch.voucher_number"
+                           class="input input-sm form-control form-control-rounded search-input"
+                           st-search="voucher_number"/>
+                </div>
+            </th>
+
+            <th colspan="2">
+                <div class="form-group  ">
+                    <div class="input-group">
+
+                    <span class="input-group-addon">
+                    <i class="fa fa-calendar"></i>
+                    </span>
+                        <input class="form-control"
+                               format="YYYY-MM-DD"
+                               moment-picker="expenses.expenseSearch.dd"
+                               ng-model="expenses.expenseSearch.dd"
+                               name="date"
+                               placeholder="Select date"
+                               change="expenses.dateSearchChanged(newValue)"
+
+                               ng-model-options="{ updateOn: 'blur' }">
+                        <span class="input-group-addon btn btn-danger"
+                              ng-click="expenses.removeDateSearch()">
+                                          <i class="fa fa-close"
+                                          ></i>
+                        </span>
+                    </div>
+
+                </div>
+            </th>
+
+
+            <th style="max-width: 20px;">
+                <div class="form-group form-group-sm ">
+                    <input ng-model="expenses.expenseSearch.paid_price"
+                           class="input input-sm form-control form-control-rounded search-input"
+                           st-search="paid_price"/>
+                </div>
+            </th>
+
+
+        </tr>
+        </thead>
+
+        <tbody ng-show="!expenses.isLoading">
+        <tr ng-repeat="(key, row) in expenses.displayed" class="editable-tr-wrap ">
+
+            <td>
+                <div>
+                    <span>{{row.id || 'n/a'}}</span>
+                </div>
+            </td>
+            <td>
+                <div>
+                    <span>{{row.voucher_number || 'n/a'}}</span>
+                </div>
+            </td>
+
+            <td>
+                <div>
+                    <span>{{row.date || 'n/a'}}</span>
+                </div>
+            </td>
+            <td>
+                <div>
+                    <a href="/#!/suppliers/single/{{row.supplier.id}}">{{row.supplier.name|| 'n/a'}}</a>
+                </div>
+            </td>
+
+            <td>
+
+                <div class="popover-wrapper">
+                    <a href="" editable-number="row.paid_price" e-required edit-disabled="true"
+                       onbeforesave="expenses.update('paid_price',row.id,$data)">
+                        {{row.paid_price | currency:'tk ' || 'n/a'}}
+                    </a>
+                </div>
+
+            </td>
+
+            <!--<td>-->
+                <!--<button class="btn btn-info  btn-xs" ng-click="expenses.viewDetails(row)">-->
+                    <!--<i class="fa fa-eye"></i> View-->
+                <!--</button>-->
+
+            <!--</td>-->
+
+
+            <!--<td>-->
+            <!--<button class="btn btn-danger  btn-xs" disabled ng-click="expenses.removeVoucher(row.id,$index)"><i-->
+            <!--class="fa fa-trash"></i> Delete-->
+            <!--</button>-->
+
+            <!--</td>-->
+
+
+        </tr>
+        </tbody>
+        <tbody ng-show="expenses.isLoading">
+        <tr>
+            <td colspan="100%" class="text-center">Loading ...</td>
+        </tr>
+        </tbody>
+        <tbody ng-show="expenses.noData">
+        <tr>
+            <td colspan="100%" class="text-center">no data found</td>
+        </tr>
+        </tbody>
+        <tfoot>
+        <tr>
+            <td class="text-center" st-pagination="" st-items-by-page="expenses.smartTablePageSize" colspan="100%">
+            </td>
+        </tr>
+        </tfoot>
+    </table>
+
+
+</div>

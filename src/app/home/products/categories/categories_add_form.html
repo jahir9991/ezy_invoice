@@ -1,0 +1,56 @@
+<form ng-submit="categories.insertFormSubmit(categories.insertData)">
+    <h3 class="with-line">Add new Category</h3>
+    <div class="row">
+        <div class="col-md-6">
+            <div class="form-group row clearfix">
+                <label for="name" class="col-sm-3 control-label text-center">Name</label>
+                <div class="col-sm-9">
+                    <input type="text" class="form-control" id="name"
+                           placeholder="name" ng-required="true"
+                           ng-model="categories.insertData.name">
+                </div>
+            </div>
+
+
+        </div>
+        <div class="col-md-6">
+            <div class="form-group row clearfix">
+                <label for="status" class="col-sm-3 control-label text-center">Status</label>
+
+                <div class="col-sm-6">
+
+                    <div class="form-group">
+                        <select class="form-control" title="Select Status" data-style="btn-primary"
+                                data-container="body" ng-model="categories.insertData.status_id"
+                                ng-selectss="categories.statusList"
+                                dis="true"
+                                selectpicker
+                                ng-options="item.id as item.name for item in categories.statusList "
+                        >
+
+
+                        </select>
+                    </div>
+
+
+                </div>
+            </div>
+
+
+        </div>
+
+    </div>
+
+
+<legend></legend>
+    <div class="form-group row clearfix">
+        <div class="col-sm-9"></div>
+        <div class="col-sm-3">
+            <button type="submit" class="btn btn-primary btn-with-icon save-profile">
+                <i class="ion-android-checkmark-circle"></i>Add Category
+            </button>
+        </div>
+    </div>
+
+
+</form>

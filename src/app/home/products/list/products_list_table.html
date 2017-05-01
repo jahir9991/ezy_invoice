@@ -1,0 +1,222 @@
+<div class="semi-medium-panel  horizontal-scroll">
+    <div class="form-group select-page-size-wrap ">
+        <label>Rows on page
+            <select id="selectpicker" class="form-control selectpicker show-tick " data-style="btn-primary"
+                    title="Rows on page" selectpicker
+                    dis="true"
+                    ng-model="products.smartTablePageSize" ng-options="i for i in [2,10,15,20,25]">
+            </select>
+        </label>
+    </div>
+    <table class="table table-hover " st-pipe="products.callServer" st-table="products.displayed" st-delay="5000">
+        <thead>
+        <tr class="sortable">
+            <th st-sort="id">ID</th>
+            <th st-sort="name">Name</th>
+            <th st-sort="brand">Brand</th>
+            <th st-sort="quantity">Quantity</th>
+            <th st-sort="buying_price">Buying Price</th>
+            <th st-sort="selling_price">Selling Price</th>
+            <th st-sort="subcategory_id">Subcategory</th>
+            <th st-sort="status_id">Status</th>
+            <th>Action</th>
+        </tr>
+        <tr>
+            <th>
+                <div class="form-group form-group-sm ">
+                    <input ng-model="products.productSearch.id" class="input-sm form-control search-input"
+                           st-search="id" st-delay="999"/>
+                </div>
+            </th>
+            <th>
+                <div class="form-group form-group-sm ">
+                    <input ng-model="products.productSearch.name"
+                           class="input input-sm form-control form-control-rounded search-input"
+                           st-search="name"/>
+                </div>
+            </th>
+            <th>
+                <div class="form-group form-group-sm ">
+
+                    <input ng-model="products.productSearch.brand"
+                           class="input input-sm form-control form-control-rounded search-input"
+                           st-search="brand"/>
+
+                </div>
+            </th>
+            <th>
+                <div class="form-group form-group-sm ">
+
+                    <input ng-model="products.productSearch.quantity" type="number"
+                           class="input input-sm form-control form-control-rounded search-input"
+                           st-search="quantity"/>
+
+                </div>
+            </th>
+            <th>
+                <div class="form-group form-group-sm ">
+
+                    <input ng-model="products.productSearch.buying_price" type="number"
+                           class="input input-sm form-control form-control-rounded search-input"
+                           st-search="buying_price"/>
+
+                </div>
+            </th>
+            <th>
+                <div class="form-group form-group-sm ">
+
+                    <input ng-model="products.productSearch.selling_price" type="number"
+                           class="input input-sm form-control form-control-rounded search-input"
+                           st-search="selling_price"/>
+
+                </div>
+            </th>
+            <th>
+
+                <div class="form-group form-group-sm jaSelect">
+
+                    <select
+                            class="form-controls form-control-rounded" title="All Subcategory" data-style="btn-info"
+                            data-container="body" ng-model="products.productSearch.subcategory"
+                            ng-selectss="products.subcategoryList"
+                            dis=""
+                            selectpicker
+                            st-input-event="change"
+                            st-search="subcategory.id"
+                            ng-options="item.id as item.name for item in products.subcategoryList ">
+
+
+                    </select>
+                </div>
+
+            </th>
+            <th>
+
+                <div class="form-group form-group-sm jaSelect">
+
+                    <select
+                            class="form-controls form-control-rounded" title="All" data-style="btn-primary"
+                            data-container="body" ng-model="products.productSearch.status"
+                            ng-selectss="products.statusList"
+                            dis=""
+                            selectpicker
+                            st-input-event="change"
+                            st-search="status.id"
+                            ng-options="item.id as item.name for item in products.statusList ">
+
+
+                    </select>
+                </div>
+
+            </th>
+            <th></th>
+
+        </tr>
+        </thead>
+
+        <tbody ng-show="!products.isLoading">
+        <tr ng-repeat="(key, row) in products.displayed" class="editable-tr-wrap ">
+            <td>
+                <span><span ng-if="row.new" class="badge bg-info">new</span>{{row.id || 'n/a'}}</span>
+
+            </td>
+            <td>
+                <div class="popover-wrapper">
+                    <a href="" editable-text="row.name" e-required
+                       onbeforesave="products.update('name',row.id,$data,row.name)">
+                        {{row.name || 'n/a'}}
+                    </a>
+                </div>
+            </td>
+            <td>
+                <div class="popover-wrapper">
+
+                    <a href="" editable-text="row.brand" e-required
+                       onbeforesave="products.update('brand',row.id,$data,row.brand)">
+                        {{row.brand || 'n/a'}}
+                    </a>
+                </div>
+            </td>
+            <td>
+                <div class="popover-wrapper">
+                    <a href="" editable-number="row.quantity" e-min="0" e-required
+                       onbeforesave="products.update('quantity',row.id,$data,row.quantity)">
+                        {{row.quantity || 'n/a'}}
+                    </a>
+                </div>
+            </td>
+            <td>
+                <div class="popover-wrapper">
+                    <a href="" editable-number="row.buying_price" edit-disabled="true"
+                       e-min="0" e-required e-step="0.01"
+                       onbeforesave="products.update('buying_price',row.id,$data,row.buying_price)">
+                        {{row.buying_price || 'n/a'}}
+                    </a>
+                </div>
+            </td>
+            <td>
+                <div class="popover-wrapper">
+                    <a href="" editable-number="row.selling_price" e-min="0" e-required e-step="0.01"
+                       onbeforesave="products.update('selling_price',row.id,$data,row.selling_price)">
+                        {{row.selling_price || 'n/a'}}
+                    </a>
+                </div>
+            </td>
+            <td>
+
+                <div class="popover-wrapper">
+                    <a href="" editable-select="row.subcategory_id" e-required
+                       onbeforesave="products.update('subcategory_id',row.id,$data,row.subcategory_id)"
+                       onaftersave="products.subcategoryAfterSave(row,$data)"
+                       e-ng-options="s.id as s.name for s in products.subcategoryList">
+                        {{ row.subcategory.name || 'n/a' }}
+                    </a>
+
+
+                </div>
+
+            </td>
+            <td>
+
+                <div class="popover-wrapper">
+
+                    <button class="btn btn-{{(products.statusList | filter:{id: row.status.id})[0].name }}">
+
+                        <a href="" editable-select="row.status_id" e-required
+                           onbeforesave="products.update('status_id',row.id,$data,row.status_id)"
+                           e-ng-options="s.id as s.name for s in products.statusList">
+                            {{ (products.statusList | filter:{id: row.status.id})[0].name || 'n/a'}}
+                        </a>
+
+                    </button>
+                </div>
+
+            </td>
+            <td>
+                <button class="btn btn-danger  btn-xs" ng-click="products.removeProduct(row.id,$index)"><i
+                        class="fa fa-trash"></i> Delete
+                </button>
+            </td>
+
+
+        </tr>
+        </tbody>
+        <tbody ng-show="products.isLoading">
+        <tr>
+            <td colspan="100%" class="text-center">Loading ...</td>
+        </tr>
+        </tbody>
+        <tbody ng-show="products.noData">
+        <tr>
+            <td colspan="100%" class="text-center">no data found</td>
+        </tr>
+        </tbody>
+        <tfoot>
+        <tr>
+            <td class="text-center" st-pagination="" st-items-by-page="products.smartTablePageSize" colspan="100%">
+            </td>
+        </tr>
+        </tfoot>
+    </table>
+
+</div>

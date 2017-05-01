@@ -1,0 +1,94 @@
+<div class="semi-medium-panel  ">
+
+    <form ng-submit="products.insertFormSubmit(products.insertData)">
+        <h3 class="with-line">Add new Product</h3>
+        <div class="row">
+            <div class="col-md-4">
+                <div class="form-group row clearfix">
+                    <label for="name" class="col-sm-3 control-label text-center">Name</label>
+                    <div class="col-sm-9">
+                        <input type="text" class="form-control" id="name"
+                               placeholder="insert product name" ng-required="true"
+                               ng-model="products.insertData.name">
+                    </div>
+                </div>
+
+
+            </div>
+            <div class="col-md-4">
+                <div class="form-group row clearfix">
+                    <label for="brand" class="col-sm-3 control-label text-center">Brand</label>
+                    <div class="col-sm-9">
+                        <input type="text" class="form-control" id="brand"
+                               placeholder="insert product brand"
+                               ng-model="products.insertData.brand">
+                    </div>
+                </div>
+
+
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-4">
+                <div class="form-group row clearfix">
+                    <label for="category" class="col-sm-3 control-label text-center">Subcategory</label>
+
+                    <div class="col-sm-6">
+
+                        <div class="form-group">
+                            <select class="form-control" title="Subcategory" data-style="btn-info"
+                                    data-container="body" ng-model="products.insertData.subcategory_id"
+                                    ng-selectss="products.subcategoryList"
+                                    dis="true"
+                                    selectpicker
+                                    required
+                                    ng-options="item.id as item.name for item in products.subcategoryList "
+                            >
+
+
+                            </select>
+                        </div>
+
+
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="form-group row clearfix">
+                    <label for="status" class="col-sm-3 control-label text-center">Status</label>
+
+                    <div class="col-sm-6">
+
+                        <div class="form-group">
+                            <select class="form-control" title="Select Status" data-style="btn-primary"
+                                    data-container="body" ng-model="products.insertData.status_id"
+                                    ng-selectss="products.statusList"
+                                    dis="true"
+                                    selectpicker
+
+                                    ng-options="item.id as item.name for item in products.statusList "
+                            >
+
+
+                            </select>
+                        </div>
+
+
+                    </div>
+                </div>
+            </div>
+
+        </div>
+        <legend></legend>
+        <div class="form-group row clearfix">
+            <div class="col-sm-9"></div>
+            <div class="col-sm-3">
+                <button type="submit" class="btn btn-primary btn-with-icon save-profile">
+                    <i class="ion-android-checkmark-circle"></i>Add Product
+                </button>
+            </div>
+        </div>
+
+
+    </form>
+</div>

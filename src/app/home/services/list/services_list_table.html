@@ -1,0 +1,158 @@
+<div class="semi-medium-panel  horizontal-scroll">
+    <div class="form-group select-page-size-wrap ">
+        <label>Rows on page
+            <select id="selectpicker" class="form-control selectpicker show-tick " data-style="btn-primary"
+                    title="Rows on page" selectpicker
+                    dis="true"
+                    ng-model="services.smartTablePageSize" ng-options="i for i in [2,10,15,20,25]">
+            </select>
+        </label>
+    </div>
+    <table class="table table-hover " st-pipe="services.callServer" st-table="services.displayed" st-delay="5000">
+        <thead>
+        <tr class="sortable">
+            <th st-sort="id">ID</th>
+            <th st-sort="name">Name</th>
+            <th st-sort="selling_price">Selling Price</th>
+            <th st-sort="type">Type</th>
+            <th st-sort="status_id">Status</th>
+            <th>Action</th>
+        </tr>
+        <tr>
+            <th>
+                <div class="form-group form-group-sm ">
+                    <input ng-model="services.serviceSearch.id" class="input-sm form-control search-input"
+                           st-search="id" st-delay="999"/>
+                </div>
+            </th>
+            <th>
+                <div class="form-group form-group-sm ">
+                    <input ng-model="services.serviceSearch.name"
+                           class="input input-sm form-control form-control-rounded search-input"
+                           st-search="name"/>
+                </div>
+            </th>
+
+
+
+            <th>
+                <div class="form-group form-group-sm ">
+
+                    <input ng-model="services.serviceSearch.selling_price" type="number"
+                           class="input input-sm form-control form-control-rounded search-input"
+                           st-search="selling_price"/>
+
+                </div>
+            </th>
+            <th>
+                <div class="form-group form-group-sm ">
+
+                    <input ng-model="services.serviceSearch.type" type="text"
+                           class="input input-sm form-control form-control-rounded search-input"
+                           st-search="type"/>
+
+                </div>
+            </th>
+
+            <th>
+
+                <div class="form-group form-group-sm jaSelect">
+
+                    <select
+                            class="form-controls form-control-rounded" title="All" data-style="btn-primary"
+                            data-container="body" ng-model="services.serviceSearch.status"
+                            ng-selectss="services.statusList"
+                            dis=""
+                            selectpicker
+                            st-input-event="change"
+                            st-search="status.id"
+                            ng-options="item.id as item.name for item in services.statusList ">
+
+
+                    </select>
+                </div>
+
+            </th>
+            <th></th>
+
+        </tr>
+        </thead>
+
+        <tbody ng-show="!services.isLoading">
+        <tr ng-repeat="(key, row) in services.displayed" class="editable-tr-wrap ">
+            <td>
+                <span><span ng-if="row.new" class="badge bg-info">new</span>{{row.id || 'n/a'}}</span>
+
+            </td>
+            <td>
+                <div class="popover-wrapper">
+                    <a href="" editable-text="row.name" e-required
+                       onbeforesave="services.update('name',row.id,$data,row.name)">
+                        {{row.name || 'n/a'}}
+                    </a>
+                </div>
+            </td>
+
+
+          
+            <td>
+                <div class="popover-wrapper">
+                    <a href="" editable-number="row.selling_price" e-min="0" e-required e-step="0.01"
+                       onbeforesave="services.update('selling_price',row.id,$data,row.selling_price)">
+                        {{row.selling_price || 'n/a'}}
+                    </a>
+                </div>
+            </td>
+            <td>
+                <div class="popover-wrapper">
+                    <a href="" editable-text="row.name" e-required
+                       onbeforesave="services.update('type',row.id,$data,row.type)">
+                        {{row.type || 'n/a'}}
+                    </a>
+                </div>
+            </td>
+
+            <td>
+
+                <div class="popover-wrapper">
+
+                    <button class="btn btn-{{(services.statusList | filter:{id: row.status.id})[0].name }}">
+
+                        <a href="" editable-select="row.status_id" e-required
+                           onbeforesave="services.update('status_id',row.id,$data,row.status_id)"
+                           e-ng-options="s.id as s.name for s in services.statusList">
+                            {{ (services.statusList | filter:{id: row.status.id})[0].name || 'n/a'}}
+                        </a>
+
+                    </button>
+                </div>
+
+            </td>
+            <td>
+                <button class="btn btn-danger  btn-xs" ng-click="services.removeService(row.id,$index)"><i
+                        class="fa fa-trash"></i> Delete
+                </button>
+            </td>
+
+
+        </tr>
+        </tbody>
+        <tbody ng-show="services.isLoading">
+        <tr>
+            <td colspan="100%" class="text-center">Loading ...</td>
+        </tr>
+        </tbody>
+        <tbody ng-show="services.noData">
+        <tr>
+            <td colspan="100%" class="text-center">no data found</td>
+        </tr>
+        </tbody>
+        <tfoot>
+        <tr>
+            <td class="text-center" st-pagination="" st-items-by-page="services.smartTablePageSize" colspan="100%">
+            </td>
+        </tr>
+        </tfoot>
+    </table>
+
+</div>

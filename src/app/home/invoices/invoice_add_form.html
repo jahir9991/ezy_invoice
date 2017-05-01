@@ -1,0 +1,191 @@
+<div class="semi-medium-panel  horizontal-scroll">
+    <form class="container-fluid" name="invoiceCreateForm" ng-model="invoices.createForm" id="invoiceCreateForm"
+          ng-submit="invoices.insertFormSubmit(invoiceCreateForm.$valid)" autocomplete="off">
+
+        <legend class="text-center">Create New Invoice</legend>
+        <br/>
+        <div class="row">
+            <div class="col-md-6 col-lg-6 ">
+                <div class="form-group " ng-class="{ 'has-error': !invoices.insertForm.client_id }">
+                    <div class="col-md-2 col-lg-2 ">
+                        <lebel class="control-label">Client:</lebel>
+                    </div>
+                    <div class="col-md-10 col-lg-10">
+                        <div class="select-box">
+
+                            <ui-select name="client" ng-model="invoices.insertForm.client_id"
+                                       ng-disabled="invoices.disabled"
+                                       reset-search-input="false"
+                                       title="select client"
+                                       append-to-body="true"
+                                       required>
+
+                                <ui-select-match placeholder="select client...">{{$select.selected.name}}
+                                </ui-select-match>
+                                <ui-select-choices repeat="client.id as client in invoices.clientList track by $index"
+                                                   refresh="invoices.getClientsBySearch($select.search,10)"
+                                                   refresh-delay="0">
+                                    <div ng-bind-html="client.name | highlight: $select.search"></div>
+                                    <small>id: {{client.id}}</small>
+                                    <span></span>
+                                    <small>phone: {{client.phone}}</small>
+
+                            </ui-select>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+            <div class="col-md-6 col-lg-6 ">
+                <div class="form-group">
+                    <label class="col-md-2 control-label">Date:</label>
+                    <div class="col-md-10">
+                        <div moment-picker="invoices.insertForm.date" format="YYYY-MM-DD">
+                            <input class="form-control"
+                                   ng-model="invoices.insertForm.date"
+                                   name="date"
+                                   placeholder="Select date"
+
+                                   required
+                                   ng-model-options="{ updateOn: 'blur' }">
+                        </div>
+
+
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+        <legend class="text-center"></legend>
+        <br>
+        <br>
+        <br>
+
+        <table class="panel table table-hover  table-responsive" ng-if="invoices.insertForm.items.length">
+            <thead>
+            <tr>
+                <th class="text-center">Name</th>
+                <th class="text-center">Price</th>
+                <th class="text-center">Qty</th>
+                <th class="text-center">Total</th>
+                <th class="text-center">Delete</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr ng-repeat="item in invoices.insertForm.items">
+
+                <td class="text-center">
+                    <div ng-class="{ 'has-error': !item.name }">
+                        <div class="form-group">
+
+
+                            <div class="select-box">
+
+                                <ui-select name="product" ng-model="item.product_id"
+                                           theme="bootstrap"
+                                           ng-disabled="invoices.disabled"
+                                           reset-search-input="false"
+                                           title="Choose a product"
+                                           append-to-body="true"
+                                           ng-required="true"
+                                           ui-select-required="true"
+                                           on-select="item.product_rate=$select.selected.selling_price;item.currentQuantity=$select.selected.quantity;item.product_name=$select.selected.name"
+                                           required>
+                                    <ui-select-match placeholder="Choose a product...">{{$select.selected.name}}
+                                    </ui-select-match>
+                                    <ui-select-choices
+                                            repeat="product.id as product in invoices.productList track by $index"
+                                            refresh="invoices.getProductsBySearch_sell($select.search,10)"
+                                            refresh-delay="0">
+                                        <div ng-bind-html="product.name | highlight: $select.search"></div>
+                                        <small ng-bind-html="product.quantity"></small>
+
+
+                                    </ui-select-choices>
+                                    <ui-select-no-choice>
+                                        <div class="text-center">
+                                            no product Found
+                                        </div>
+                                    </ui-select-no-choice>
+
+
+                                </ui-select>
+                            </div>
+                        </div>
+                    </div>
+                </td>
+                <td>
+                    <!--<input type="hidden" min="0" ng-model="item.product_total_price" class="form-control"/>-->
+                    <h5>{{item.product_rate | currency: 'tk '}}</h5>
+                </td>
+                <td>
+                    <div class="form-group">
+
+                        <input type="number" min="1" ng-model="item.product_quantity"
+                               class="form-control input input-sm">
+                    </div>
+                </td>
+
+                <td><p class="text-center" ng-model="item.product_total_price">{{item.product_quantity *
+                    item.product_rate}}</p></td>
+                <td>
+                    <button type="button" class="btn btn-danger"
+                            ng-click="invoices.itemRemove($index)"><i class="fa fa-trash-o"></i>
+                    </button>
+                </td>
+            </tr>
+
+            </tbody>
+        </table>
+
+
+        <legend></legend>
+        <div class="row">
+            <div class="col-md-1"></div>
+            <div class="col-md-6">
+                <button type="button" class="btn btn-info" ng-click="invoices.itemAdd()">
+                    <i class="fa fa-plus"></i>Add item
+                </button>
+
+            </div>
+            <div class="col-md-4" ng-if="invoices.insertForm.items.length">
+                <div class="row">
+                    <div class="col-md-4">
+                        <h5>Sub Total:</h5>
+                    </div>
+                    <div class="col-md-8">
+                        <p>{{invoices.itemSubTotalPrice() | currency : 'tk '}}</p>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-3">
+                        <h5>Discount:</h5>
+                    </div>
+                    <div class="col-md-9">
+                        <input class="form-control " type="number" min="0" step="00.01"
+                               ng-model="invoices.insertForm.discount_price">
+                    </div>
+                </div>
+                <legend></legend>
+                <div class="row">
+                    <div class="col-md-4">
+                        <h5>Total:</h5>
+                    </div>
+                    <div class="col-md-8">
+                        <p>{{invoices.itemTotalPrice() | currency : 'tk '}}</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="col-md-2 pull-right">
+            <button type="submit" class="btn btn-fab btn-success">
+                Save Invoice
+            </button>
+        </div>
+
+    </form>
+
+</div>

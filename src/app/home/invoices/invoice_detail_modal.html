@@ -1,0 +1,1802 @@
+<div class="panel panel-primary">
+    <!--<div class="panel-heading ">-->
+    <!--<h4 class=" text-center" id="myModalLabel">Add Payment</h4>-->
+
+    <!--</div>-->
+
+    <div class="panel-body" id="invoiceDetail">
+        <div class="form-group ">
+            <button class="  btn btn-success" data-dismiss="modal" ng-click="print('invoiceBox')">
+                <i class="fa fa-print"></i> Print
+            </button>
+            <button class="btn btn-danger " ng-click="closeThisDialog()">Close</button>
+
+            <!--{{invoice}}-->
+        </div>
+        <style>
+
+            .invoiceBox {
+                margin: auto !important;
+                box-shadow: rgba(0, 0, 0, 0.2) 0px 5px 5px -3px, rgba(0, 0, 0, 0.137255) 0px 8px 10px 1px, rgba(0, 0, 0, 0.117647) 0px 3px 14px 2px;
+            }
+        </style>
+
+        <span id="invoiceBox">
+            <style>
+
+
+                .invoiceBox {
+                    bottom: 0px;
+                    box-sizing: border-box;
+                    color: rgba(0, 0, 0, 0.870588);
+                    display: flex;
+                    height: 1699px;
+                    left: 0px;
+                    letter-spacing: -0.1px;
+                    min-height: 100%;
+                    position: relative;
+                    right: 0px;
+                    text-rendering: optimizeLegibility;
+                    text-size-adjust: 100%;
+                    top: 0px;
+                    width: 1126px;
+                    column-rule-color: rgba(0, 0, 0, 0.870588);
+                    perspective-origin: 563px 849.5px;
+                    transform-origin: 563px 849.5px;
+                    border: 0px none rgba(0, 0, 0, 0.870588);
+                    font: normal normal normal normal 13px / 18.2px Roboto, "Helvetica Neue", Arial, sans-serif;
+                    outline: rgba(0, 0, 0, 0.870588) none 0px;
+                    overflow: hidden;
+                    padding: 0;
+                    margin: 0;
+                }
+
+                /*#DIV_1*/
+
+                #DIV_2 {
+                    box-sizing: border-box;
+                    color: rgba(0, 0, 0, 0.870588);
+                    height: 1699px;
+                    letter-spacing: -0.1px;
+                    min-height: auto;
+                    min-width: auto;
+                    text-rendering: optimizeLegibility;
+                    text-size-adjust: 100%;
+                    width: 1148px;
+                    column-rule-color: rgba(0, 0, 0, 0.870588);
+                    perspective-origin: 574px 849.5px;
+                    transform-origin: 574px 849.5px;
+                    border: 0px none rgba(0, 0, 0, 0.870588);
+                    font: normal normal normal normal 13px / 18.2px Roboto, "Helvetica Neue", Arial, sans-serif;
+                    outline: rgba(0, 0, 0, 0.870588) none 0px;
+                    padding: 64px;
+                }
+
+                /*#DIV_2*/
+
+                #DIV_3 {
+                    /*box-shadow: rgba(0, 0, 0, 0.2) 0px 5px 5px -3px, rgba(0, 0, 0, 0.137255) 0px 8px 10px 1px, rgba(0, 0, 0, 0.117647) 0px 3px 14px 2px;*/
+                    box-sizing: border-box;
+                    color: rgba(0, 0, 0, 0.870588);
+                    height: 1571px;
+                    letter-spacing: -0.1px;
+                    max-width: 1020px;
+                    min-width: 1020px;
+                    text-rendering: optimizeLegibility;
+                    text-size-adjust: 100%;
+                    width: 1020px;
+                    column-rule-color: rgba(0, 0, 0, 0.870588);
+                    perspective-origin: 510px 785.5px;
+                    transform-origin: 510px 785.5px;
+                    background: rgb(255, 255, 255) none repeat scroll 0% 0% / auto padding-box border-box;
+                    border: 0px none rgba(0, 0, 0, 0.870588);
+                    font: normal normal normal normal 13px / 18.2px Roboto, "Helvetica Neue", Arial, sans-serif;
+                    outline: rgba(0, 0, 0, 0.870588) none 0px;
+                    overflow: hidden;
+                    padding: 88px;
+                }
+
+                /*#DIV_3*/
+
+                #DIV_4 {
+                    box-sizing: border-box;
+                    color: rgba(0, 0, 0, 0.870588);
+                    display: flex;
+                    height: 380px;
+                    letter-spacing: -0.1px;
+                    text-rendering: optimizeLegibility;
+                    text-size-adjust: 100%;
+                    width: 844px;
+                    column-rule-color: rgba(0, 0, 0, 0.870588);
+                    align-content: flex-start;
+                    align-items: flex-start;
+                    justify-content: space-between;
+                    perspective-origin: 422px 190px;
+                    transform-origin: 422px 190px;
+                    border: 0px none rgba(0, 0, 0, 0.870588);
+                    font: normal normal normal normal 13px / 18.2px Roboto, "Helvetica Neue", Arial, sans-serif;
+                    outline: rgba(0, 0, 0, 0.870588) none 0px;
+                }
+
+                /*#DIV_4*/
+
+                #DIV_5 {
+                    box-sizing: border-box;
+                    color: rgba(0, 0, 0, 0.541176);
+                    display: flex;
+                    height: 380px;
+                    letter-spacing: -0.1px;
+                    min-height: auto;
+                    min-width: auto;
+                    text-rendering: optimizeLegibility;
+                    text-size-adjust: 100%;
+                    width: 413px;
+                    column-rule-color: rgba(0, 0, 0, 0.541176);
+                    align-self: flex-start;
+                    perspective-origin: 206.5px 190px;
+                    transform-origin: 206.5px 190px;
+                    border: 0px none rgba(0, 0, 0, 0.541176);
+                    flex-flow: column nowrap;
+                    font: normal normal normal normal 13px / 22px Roboto, "Helvetica Neue", Arial, sans-serif;
+                    outline: rgba(0, 0, 0, 0.541176) none 0px;
+                }
+
+                /*#DIV_5*/
+
+                #DIV_6 {
+                    box-sizing: border-box;
+                    color: rgba(0, 0, 0, 0.541176);
+                    display: flex;
+                    height: 156px;
+                    letter-spacing: -0.1px;
+                    max-width: 100%;
+                    min-height: auto;
+                    min-width: auto;
+                    text-rendering: optimizeLegibility;
+                    text-size-adjust: 100%;
+                    width: 413px;
+                    column-rule-color: rgba(0, 0, 0, 0.541176);
+                    align-content: center;
+                    align-items: center;
+                    perspective-origin: 206.5px 78px;
+                    transform-origin: 206.5px 78px;
+                    border: 0px none rgba(0, 0, 0, 0.541176);
+                    font: normal normal normal normal 13px / 22px Roboto, "Helvetica Neue", Arial, sans-serif;
+                    margin: 0px 0px 80px;
+                    outline: rgba(0, 0, 0, 0.541176) none 0px;
+                }
+
+                /*#DIV_6*/
+
+                #DIV_7 {
+                    box-sizing: border-box;
+                    color: rgb(255, 255, 255);
+                    display: flex;
+                    height: 156px;
+                    letter-spacing: -0.1px;
+                    max-width: 100%;
+                    min-height: auto;
+                    min-width: auto;
+                    text-rendering: optimizeLegibility;
+                    text-size-adjust: 100%;
+                    width: 156px;
+                    column-rule-color: rgb(255, 255, 255);
+                    align-content: center;
+                    align-items: center;
+                    align-self: center;
+                    justify-content: center;
+                    perspective-origin: 78px 78px;
+                    transform-origin: 78px 78px;
+                    /*background: rgb(3, 155, 229) none repeat scroll 0% 0% / auto padding-box border-box;*/
+                    border: 0px none rgb(255, 255, 255);
+                    font: normal normal normal normal 115px / 22px Roboto, "Helvetica Neue", Arial, sans-serif;
+                    outline: rgb(255, 255, 255) none 0px;
+                }
+
+                /*#DIV_7*/
+
+                #DIV_8 {
+                    /*box-sizing: border-box;
+                    color: rgb(255, 255, 255);
+                    height: 22px;
+                    letter-spacing: -0.1px;
+                    max-width: 100%;
+                    min-height: auto;
+                    min-width: auto;
+                    text-rendering: optimizeLegibility;
+                    text-size-adjust: 100%;
+                    width: 63.4688px;
+                    column-rule-color: rgb(255, 255, 255);
+                    align-self: center;
+                    perspective-origin: 31.7344px 11px;
+                    transform-origin: 31.7344px 11px;
+                    border: 0px none rgb(255, 255, 255);
+                    font: normal normal normal normal 115px / 22px Roboto, "Helvetica Neue", Arial, sans-serif;
+                    outline: rgb(255, 255, 255) none 0px;*/
+                }
+
+                /*#DIV_8*/
+
+                #DIV_9, #DIV_22 {
+                    box-sizing: border-box;
+                    color: rgba(0, 0, 0, 0.117647);
+                    height: 144px;
+                    letter-spacing: -0.1px;
+                    max-width: 100%;
+                    min-height: auto;
+                    min-width: auto;
+                    text-rendering: optimizeLegibility;
+                    text-size-adjust: 100%;
+                    width: 1px;
+                    column-rule-color: rgba(0, 0, 0, 0.117647);
+                    align-self: center;
+                    perspective-origin: 0.5px 72px;
+                    transform-origin: 0.5px 72px;
+                    background: rgba(0, 0, 0, 0.117647) none repeat scroll 0% 0% / auto padding-box border-box;
+                    border: 0px none rgba(0, 0, 0, 0.117647);
+                    font: normal normal normal normal 13px / 22px Roboto, "Helvetica Neue", Arial, sans-serif;
+                    margin: 0px 48px;
+                    outline: rgba(0, 0, 0, 0.117647) none 0px;
+                }
+
+                /*#DIV_9, #DIV_22*/
+
+                #DIV_10 {
+                    box-sizing: border-box;
+                    color: rgba(0, 0, 0, 0.541176);
+                    height: 132px;
+                    letter-spacing: -0.1px;
+                    max-width: 100%;
+                    min-height: auto;
+                    min-width: auto;
+                    text-rendering: optimizeLegibility;
+                    text-size-adjust: 100%;
+                    width: 160px;
+                    column-rule-color: rgba(0, 0, 0, 0.541176);
+                    align-self: center;
+                    perspective-origin: 80px 66px;
+                    transform-origin: 80px 66px;
+                    border: 0px none rgba(0, 0, 0, 0.541176);
+                    font: normal normal normal normal 13px / 22px Roboto, "Helvetica Neue", Arial, sans-serif;
+                    outline: rgba(0, 0, 0, 0.541176) none 0px;
+                }
+
+                /*#DIV_10*/
+
+                #DIV_11, #DIV_13, #DIV_15, #DIV_17, #DIV_24, #DIV_26, #DIV_28 {
+                    box-sizing: border-box;
+                    color: rgba(0, 0, 0, 0.541176);
+                    height: 22px;
+                    letter-spacing: -0.1px;
+                    text-rendering: optimizeLegibility;
+                    text-size-adjust: 100%;
+                    width: 195px;
+                    column-rule-color: rgba(0, 0, 0, 0.541176);
+                    perspective-origin: 80px 11px;
+                    transform-origin: 80px 11px;
+                    border: 0px none rgba(0, 0, 0, 0.541176);
+                    font: normal normal normal normal 13px / 22px Roboto, "Helvetica Neue", Arial, sans-serif;
+                    outline: rgba(0, 0, 0, 0.541176) none 0px;
+                }
+
+                /*#DIV_11, #DIV_13, #DIV_15, #DIV_17, #DIV_24, #DIV_26, #DIV_28*/
+
+                #DIV_12, #DIV_25 {
+                    box-sizing: border-box;
+                    color: rgba(0, 0, 0, 0.541176);
+                    height: 44px;
+                    letter-spacing: -0.10px;
+                    text-rendering: optimizeLegibility;
+                    text-size-adjust: 100%;
+                    width: 160px;
+                    column-rule-color: rgba(0, 0, 0, 0.541176);
+                    perspective-origin: 80px 22px;
+                    transform-origin: 80px 22px;
+                    border: 0px none rgba(0, 0, 0, 0.541176);
+                    font: normal normal normal normal 13px / 22px Roboto, "Helvetica Neue", Arial, sans-serif;
+                    outline: rgba(0, 0, 0, 0.541176) none 0px;
+                }
+
+                /*#DIV_12, #DIV_25*/
+
+                #SPAN_14, #SPAN_16, #SPAN_27 {
+                    box-sizing: border-box;
+                    color: rgba(0, 0, 0, 0.541176);
+                    letter-spacing: -0.1px;
+                    text-rendering: optimizeLegibility;
+                    text-size-adjust: 100%;
+                    column-rule-color: rgba(0, 0, 0, 0.541176);
+                    border: 0px none rgba(0, 0, 0, 0.541176);
+                    font: normal normal normal normal 13px / 22px Roboto, "Helvetica Neue", Arial, sans-serif;
+                    outline: rgba(0, 0, 0, 0.541176) none 0px;
+                }
+
+                /*#SPAN_14, #SPAN_16, #SPAN_27*/
+
+                #SPAN_18, #SPAN_29 {
+                    box-sizing: border-box;
+                    color: rgba(0, 0, 0, 0.541176);
+                    letter-spacing: -0.1px;
+                    text-rendering: optimizeLegibility;
+                    text-size-adjust: 100%;
+                    column-rule-color: rgba(0, 0, 0, 0.541176);
+                    border: 0px none rgba(0, 0, 0, 0.541176);
+                    font: normal normal normal normal 13px / 22px Roboto, "Helvetica Neue", Arial, sans-serif;
+                    outline: rgba(0, 0, 0, 0.541176) none 0px;
+                }
+
+                /*#SPAN_18, #SPAN_29*/
+
+                #DIV_19 {
+                    box-sizing: border-box;
+                    color: rgba(0, 0, 0, 0.541176);
+                    display: flex;
+                    height: 144px;
+                    letter-spacing: -0.1px;
+                    max-width: 100%;
+                    min-height: auto;
+                    min-width: auto;
+                    text-rendering: optimizeLegibility;
+                    text-size-adjust: 100%;
+                    width: 413px;
+                    column-rule-color: rgba(0, 0, 0, 0.541176);
+                    align-content: center;
+                    align-items: center;
+                    perspective-origin: 206.5px 72px;
+                    transform-origin: 206.5px 72px;
+                    border: 0px none rgba(0, 0, 0, 0.541176);
+                    font: normal normal normal normal 13px / 22px Roboto, "Helvetica Neue", Arial, sans-serif;
+                    outline: rgba(0, 0, 0, 0.541176) none 0px;
+                }
+
+                /*#DIV_19*/
+
+                #DIV_20 {
+                    box-sizing: border-box;
+                    color: rgba(0, 0, 0, 0.541176);
+                    display: flex;
+                    height: 22px;
+                    letter-spacing: -0.1px;
+                    max-width: 100%;
+                    min-height: auto;
+                    min-width: auto;
+                    text-rendering: optimizeLegibility;
+                    text-size-adjust: 100%;
+                    width: 156px;
+                    column-rule-color: rgba(0, 0, 0, 0.541176);
+                    align-content: center;
+                    align-items: center;
+                    align-self: center;
+                    justify-content: flex-end;
+                    perspective-origin: 78px 11px;
+                    transform-origin: 78px 11px;
+                    border: 0px none rgba(0, 0, 0, 0.541176);
+                    font: normal normal 300 normal 24px / 22px Roboto, "Helvetica Neue", Arial, sans-serif;
+                    outline: rgba(0, 0, 0, 0.541176) none 0px;
+                }
+
+                /*#DIV_20*/
+
+                #DIV_21 {
+                    box-sizing: border-box;
+                    color: rgba(0, 0, 0, 0.541176);
+                    height: 22px;
+                    letter-spacing: -0.1px;
+                    max-width: 100%;
+                    min-height: auto;
+                    min-width: auto;
+                    text-rendering: optimizeLegibility;
+                    text-size-adjust: 100%;
+                    width: 78.7031px;
+                    column-rule-color: rgba(0, 0, 0, 0.541176);
+                    align-self: center;
+                    perspective-origin: 39.3438px 11px;
+                    transform-origin: 39.3438px 11px;
+                    border: 0px none rgba(0, 0, 0, 0.541176);
+                    font: normal normal 300 normal 24px / 22px Roboto, "Helvetica Neue", Arial, sans-serif;
+                    outline: rgba(0, 0, 0, 0.541176) none 0px;
+                }
+
+                /*#DIV_21*/
+
+                #DIV_23 {
+                    box-sizing: border-box;
+                    color: rgba(0, 0, 0, 0.541176);
+                    height: 110px;
+                    letter-spacing: -0.1px;
+                    max-width: 100%;
+                    min-height: auto;
+                    min-width: auto;
+                    text-rendering: optimizeLegibility;
+                    text-size-adjust: 100%;
+                    width: 160px;
+                    column-rule-color: rgba(0, 0, 0, 0.541176);
+                    align-self: center;
+                    perspective-origin: 80px 55px;
+                    transform-origin: 80px 55px;
+                    border: 0px none rgba(0, 0, 0, 0.541176);
+                    font: normal normal normal normal 13px / 22px Roboto, "Helvetica Neue", Arial, sans-serif;
+                    outline: rgba(0, 0, 0, 0.541176) none 0px;
+                }
+
+                /*#DIV_23*/
+
+                #TABLE_30 {
+                    box-sizing: border-box;
+                    color: rgba(0, 0, 0, 0.870588);
+                    height: 161px;
+                    letter-spacing: -0.1px;
+                    min-height: auto;
+                    min-width: auto;
+                    text-rendering: optimizeLegibility;
+                    text-size-adjust: 100%;
+                    width: 335px;
+                    column-rule-color: rgba(0, 0, 0, 0.870588);
+                    align-self: flex-start;
+                    perspective-origin: 142px 80.5px;
+                    transform-origin: 142px 80.5px;
+                    font: normal normal normal normal 15px / 21px Roboto, "Helvetica Neue", Arial, sans-serif;
+                    outline: rgba(0, 0, 0, 0.870588) none 0px;
+                }
+
+                /*#TABLE_30*/
+
+                #TBODY_31 {
+                    box-sizing: border-box;
+                    color: rgba(0, 0, 0, 0.870588);
+                    height: 161px;
+                    letter-spacing: -0.1px;
+                    text-rendering: optimizeLegibility;
+                    text-size-adjust: 100%;
+                    width: 284px;
+                    column-rule-color: rgba(0, 0, 0, 0.870588);
+                    perspective-origin: 142px 80.5px;
+                    transform-origin: 142px 80.5px;
+                    border: 0px none rgb(128, 128, 128);
+                    border-spacing: 2px 2px;
+                    font: normal normal normal normal 15px / 21px Roboto, "Helvetica Neue", Arial, sans-serif;
+                    outline: rgba(0, 0, 0, 0.870588) none 0px;
+                }
+
+                /*#TBODY_31*/
+
+                #TR_32 {
+                    box-sizing: border-box;
+                    color: rgba(0, 0, 0, 0.870588);
+                    height: 82px;
+                    letter-spacing: -0.1px;
+                    text-rendering: optimizeLegibility;
+                    text-size-adjust: 100%;
+                    vertical-align: middle;
+                    width: 284px;
+                    column-rule-color: rgba(0, 0, 0, 0.870588);
+                    perspective-origin: 142px 41px;
+                    transform-origin: 142px 41px;
+                    border: 0px none rgb(128, 128, 128);
+                    border-spacing: 2px 2px;
+                    font: normal normal 300 normal 35px / 49px Roboto, "Helvetica Neue", Arial, sans-serif;
+                    outline: rgba(0, 0, 0, 0.870588) none 0px;
+                }
+
+                /*#TR_32*/
+
+                #TD_33 {
+                    box-sizing: border-box;
+                    color: rgba(0, 0, 0, 0.541176);
+                    height: 82px;
+                    letter-spacing: -0.1px;
+                    text-align: right;
+                    text-rendering: optimizeLegibility;
+                    text-size-adjust: 100%;
+                    vertical-align: middle;
+                    width: 148px;
+                    column-rule-color: rgba(0, 0, 0, 0.541176);
+                    perspective-origin: 74px 41px;
+                    transform-origin: 74px 41px;
+                    border: 0px none rgba(0, 0, 0, 0.541176);
+                    border-spacing: 2px 2px;
+                    font: normal normal 300 normal 35px / 49px Roboto, "Helvetica Neue", Arial, sans-serif;
+                    outline: rgba(0, 0, 0, 0.541176) none 0px;
+                    padding: 1px 16px 32px 1px;
+                }
+
+                /*#TD_33*/
+
+                #TD_34 {
+                    box-sizing: border-box;
+                    height: 82px;
+                    letter-spacing: -0.1px;
+                    text-rendering: optimizeLegibility;
+                    text-size-adjust: 100%;
+                    vertical-align: middle;
+                    /*width: 130px;*/
+                    perspective-origin: 65px 41px;
+                    transform-origin: 65px 41px;
+                    border-spacing: 2px 2px;
+                    font: normal normal 300 normal 30px / 49px Roboto, "Helvetica Neue", Arial, sans-serif;
+                    padding: 1px 1px 32px;
+                }
+
+                /*#TD_34*/
+
+                #TR_35, #TR_38, #TR_41 {
+                    box-sizing: border-box;
+                    color: rgba(0, 0, 0, 0.870588);
+                    height: 23px;
+                    letter-spacing: -0.1px;
+                    text-rendering: optimizeLegibility;
+                    text-size-adjust: 100%;
+                    vertical-align: middle;
+                    width: 284px;
+                    column-rule-color: rgba(0, 0, 0, 0.870588);
+                    perspective-origin: 142px 11.5px;
+                    transform-origin: 142px 11.5px;
+                    border: 0px none rgb(128, 128, 128);
+                    border-spacing: 2px 2px;
+                    font: normal normal normal normal 15px / 21px Roboto, "Helvetica Neue", Arial, sans-serif;
+                    outline: rgba(0, 0, 0, 0.870588) none 0px;
+                }
+
+                /*#TR_35, #TR_38, #TR_41*/
+
+                #TD_36, #TD_39, #TD_42 {
+                    box-sizing: border-box;
+                    color: rgba(0, 0, 0, 0.541176);
+                    height: 23px;
+                    letter-spacing: -0.1px;
+                    text-align: right;
+                    text-rendering: optimizeLegibility;
+                    text-size-adjust: 100%;
+                    vertical-align: middle;
+                    width: 148px;
+                    column-rule-color: rgba(0, 0, 0, 0.541176);
+                    perspective-origin: 74px 11.5px;
+                    transform-origin: 74px 11.5px;
+                    border: 0px none rgba(0, 0, 0, 0.541176);
+                    border-spacing: 2px 2px;
+                    font: normal normal normal normal 15px / 21px Roboto, "Helvetica Neue", Arial, sans-serif;
+                    outline: rgba(0, 0, 0, 0.541176) none 0px;
+                    padding: 1px 16px 1px 1px;
+                }
+
+                /*#TD_36, #TD_39, #TD_42*/
+
+                #TD_37, #TD_40 {
+                    box-sizing: border-box;
+                    height: 23px;
+                    letter-spacing: -0.1px;
+                    text-rendering: optimizeLegibility;
+                    text-size-adjust: 100%;
+                    vertical-align: middle;
+                    width: 130px;
+                    perspective-origin: 65px 11.5px;
+                    transform-origin: 65px 11.5px;
+                    border-spacing: 2px 2px;
+                    font: normal normal normal normal 15px / 21px Roboto, "Helvetica Neue", Arial, sans-serif;
+                    padding: 1px;
+                }
+
+                /*#TD_37, #TD_40*/
+
+                #TD_43 {
+                    box-sizing: border-box;
+                    height: 23px;
+                    letter-spacing: -0.1px;
+                    text-rendering: optimizeLegibility;
+                    text-size-adjust: 100%;
+                    vertical-align: middle;
+                    width: 130px;
+                    perspective-origin: 65px 11.5px;
+                    transform-origin: 65px 11.5px;
+                    border-spacing: 2px 2px;
+                    font: normal normal normal normal 15px / 21px Roboto, "Helvetica Neue", Arial, sans-serif;
+                    padding: 1px;
+                }
+
+                /*#TD_43*/
+
+                #DIV_44 {
+                    box-sizing: border-box;
+                    color: rgba(0, 0, 0, 0.870588);
+                    height: 724px;
+                    letter-spacing: -0.1px;
+                    text-rendering: optimizeLegibility;
+                    text-size-adjust: 100%;
+                    width: 844px;
+                    column-rule-color: rgba(0, 0, 0, 0.870588);
+                    perspective-origin: 422px 362px;
+                    transform-origin: 422px 362px;
+                    border: 0px none rgba(0, 0, 0, 0.870588);
+                    font: normal normal normal normal 13px / 18.2px Roboto, "Helvetica Neue", Arial, sans-serif;
+                    outline: rgba(0, 0, 0, 0.870588) none 0px;
+                }
+
+                /*#DIV_44*/
+
+                #TABLE_45 {
+                    box-sizing: border-box;
+                    color: rgba(0, 0, 0, 0.870588);
+                    /*height: 437px;*/
+                    letter-spacing: -0.1px;
+                    text-align: left;
+                    text-rendering: optimizeLegibility;
+                    text-size-adjust: 100%;
+                    width: 844px;
+                    column-rule-color: rgba(0, 0, 0, 0.870588);
+                    perspective-origin: 422px 218.5px;
+                    transform-origin: 422px 218.5px;
+                    border: 0px none rgba(0, 0, 0, 0.870588);
+                    border-spacing: 0px 0px;
+                    font: normal normal normal normal 15px / 21px Roboto, "Helvetica Neue", Arial, sans-serif;
+                    margin: 96px 0px 0px;
+                    outline: rgba(0, 0, 0, 0.870588) none 0px;
+                }
+
+                /*#TABLE_45*/
+
+                #THEAD_46 {
+                    box-sizing: border-box;
+                    color: rgba(0, 0, 0, 0.870588);
+                    height: 54px;
+                    letter-spacing: -0.1px;
+                    text-align: left;
+                    text-rendering: optimizeLegibility;
+                    text-size-adjust: 100%;
+                    width: 844px;
+                    column-rule-color: rgba(0, 0, 0, 0.870588);
+                    perspective-origin: 422px 27px;
+                    transform-origin: 422px 27px;
+                    border: 0px none rgba(0, 0, 0, 0.870588);
+                    font: normal normal normal normal 15px / 21px Roboto, "Helvetica Neue", Arial, sans-serif;
+                    outline: rgba(0, 0, 0, 0.870588) none 0px;
+                }
+
+                /*#THEAD_46*/
+
+                #TR_47 {
+                    box-sizing: border-box;
+                    color: rgba(0, 0, 0, 0.870588);
+                    height: 54px;
+                    letter-spacing: -0.1px;
+                    text-align: left;
+                    text-rendering: optimizeLegibility;
+                    text-size-adjust: 100%;
+                    vertical-align: middle;
+                    width: 844px;
+                    column-rule-color: rgba(0, 0, 0, 0.870588);
+                    perspective-origin: 422px 27px;
+                    transform-origin: 422px 27px;
+                    border: 0px none rgba(0, 0, 0, 0.870588);
+                    font: normal normal normal normal 15px / 21px Roboto, "Helvetica Neue", Arial, sans-serif;
+                    outline: rgba(0, 0, 0, 0.870588) none 0px;
+                }
+
+                /*#TR_47*/
+
+                #TH_48 {
+                    box-sizing: border-box;
+                    color: rgba(0, 0, 0, 0.541176);
+                    height: 54px;
+                    letter-spacing: -0.1px;
+                    min-width: 120px;
+                    text-align: left;
+                    text-rendering: optimizeLegibility;
+                    text-size-adjust: 100%;
+                    vertical-align: middle;
+                    white-space: nowrap;
+                    width: 364px;
+                    column-rule-color: rgba(0, 0, 0, 0.541176);
+                    perspective-origin: 182px 27px;
+                    transform-origin: 182px 27px;
+                    border-top: 0px none rgba(0, 0, 0, 0.541176);
+                    border-right: 0px none rgba(0, 0, 0, 0.541176);
+                    border-bottom: 1px solid rgba(0, 0, 0, 0.117647);
+                    border-left: 0px none rgba(0, 0, 0, 0.541176);
+                    font: normal normal 500 normal 15px / 21px Roboto, "Helvetica Neue", Arial, sans-serif;
+                    outline: rgba(0, 0, 0, 0.541176) none 0px;
+                    padding: 16px 8px 16px 24px;
+                }
+
+                /*#TH_48*/
+
+                #TH_49 {
+                    box-sizing: border-box;
+                    color: rgba(0, 0, 0, 0.541176);
+                    height: 54px;
+                    letter-spacing: -0.1px;
+                    min-width: 120px;
+                    text-align: left;
+                    text-rendering: optimizeLegibility;
+                    text-size-adjust: 100%;
+                    vertical-align: middle;
+                    white-space: nowrap;
+                    width: 120px;
+                    column-rule-color: rgba(0, 0, 0, 0.541176);
+                    perspective-origin: 60px 27px;
+                    transform-origin: 60px 27px;
+                    border-top: 0px none rgba(0, 0, 0, 0.541176);
+                    border-right: 0px none rgba(0, 0, 0, 0.541176);
+                    border-bottom: 1px solid rgba(0, 0, 0, 0.117647);
+                    border-left: 0px none rgba(0, 0, 0, 0.541176);
+                    font: normal normal 500 normal 15px / 21px Roboto, "Helvetica Neue", Arial, sans-serif;
+                    outline: rgba(0, 0, 0, 0.541176) none 0px;
+                    padding: 16px 8px;
+                }
+
+                /*#TH_49*/
+
+                #TH_50, #TH_51 {
+                    box-sizing: border-box;
+                    color: rgba(0, 0, 0, 0.541176);
+                    height: 54px;
+                    letter-spacing: -0.1px;
+                    min-width: 120px;
+                    text-align: right;
+                    text-rendering: optimizeLegibility;
+                    text-size-adjust: 100%;
+                    vertical-align: middle;
+                    white-space: nowrap;
+                    width: 120px;
+                    column-rule-color: rgba(0, 0, 0, 0.541176);
+                    perspective-origin: 60px 27px;
+                    transform-origin: 60px 27px;
+                    border-top: 0px none rgba(0, 0, 0, 0.541176);
+                    border-right: 0px none rgba(0, 0, 0, 0.541176);
+                    border-bottom: 1px solid rgba(0, 0, 0, 0.117647);
+                    border-left: 0px none rgba(0, 0, 0, 0.541176);
+                    font: normal normal 500 normal 15px / 21px Roboto, "Helvetica Neue", Arial, sans-serif;
+                    outline: rgba(0, 0, 0, 0.541176) none 0px;
+                    padding: 16px 8px;
+                }
+
+                /*#TH_50, #TH_51*/
+
+                #TH_52 {
+                    box-sizing: border-box;
+                    color: rgba(0, 0, 0, 0.541176);
+                    height: 54px;
+                    letter-spacing: -0.1px;
+                    min-width: 120px;
+                    text-align: right;
+                    text-rendering: optimizeLegibility;
+                    text-size-adjust: 100%;
+                    vertical-align: middle;
+                    white-space: nowrap;
+                    width: 120px;
+                    column-rule-color: rgba(0, 0, 0, 0.541176);
+                    perspective-origin: 60px 27px;
+                    transform-origin: 60px 27px;
+                    border-top: 0px none rgba(0, 0, 0, 0.541176);
+                    border-right: 0px none rgba(0, 0, 0, 0.541176);
+                    border-bottom: 1px solid rgba(0, 0, 0, 0.117647);
+                    border-left: 0px none rgba(0, 0, 0, 0.541176);
+                    font: normal normal 500 normal 15px / 21px Roboto, "Helvetica Neue", Arial, sans-serif;
+                    outline: rgba(0, 0, 0, 0.541176) none 0px;
+                    padding: 16px 24px 16px 8px;
+                }
+
+                /*#TH_52*/
+
+                #TBODY_53 {
+                    box-sizing: border-box;
+                    color: rgba(0, 0, 0, 0.870588);
+                    height: 383px;
+                    letter-spacing: -0.1px;
+                    text-align: left;
+                    text-rendering: optimizeLegibility;
+                    text-size-adjust: 100%;
+                    width: 844px;
+                    column-rule-color: rgba(0, 0, 0, 0.870588);
+                    perspective-origin: 422px 191.5px;
+                    transform-origin: 422px 191.5px;
+                    border: 0px none rgba(0, 0, 0, 0.870588);
+                    font: normal normal normal normal 15px / 21px Roboto, "Helvetica Neue", Arial, sans-serif;
+                    outline: rgba(0, 0, 0, 0.870588) none 0px;
+                }
+
+                /*#TBODY_53*/
+
+                #TR_54, #TR_62, #TR_70 {
+                    box-sizing: border-box;
+                    color: rgba(0, 0, 0, 0.870588);
+                    height: 96px;
+                    letter-spacing: -0.1px;
+                    text-align: left;
+                    text-rendering: optimizeLegibility;
+                    text-size-adjust: 100%;
+                    vertical-align: middle;
+                    width: 844px;
+                    column-rule-color: rgba(0, 0, 0, 0.870588);
+                    perspective-origin: 422px 48px;
+                    transform-origin: 422px 48px;
+                    border: 0px none rgba(0, 0, 0, 0.870588);
+                    font: normal normal normal normal 15px / 21px Roboto, "Helvetica Neue", Arial, sans-serif;
+                    outline: rgba(0, 0, 0, 0.870588) none 0px;
+                }
+
+                /*#TR_54, #TR_62, #TR_70*/
+
+                #TD_55, #TD_63, #TD_71 {
+                    box-sizing: border-box;
+                    color: rgba(0, 0, 0, 0.870588);
+                    height: 96px;
+                    letter-spacing: -0.1px;
+                    text-align: left;
+                    text-rendering: optimizeLegibility;
+                    text-size-adjust: 100%;
+                    vertical-align: middle;
+                    width: 364px;
+                    column-rule-color: rgba(0, 0, 0, 0.870588);
+                    perspective-origin: 182px 48px;
+                    transform-origin: 182px 48px;
+                    border-top: 0px none rgba(0, 0, 0, 0.870588);
+                    border-right: 0px none rgba(0, 0, 0, 0.870588);
+                    border-bottom: 1px solid rgba(0, 0, 0, 0.117647);
+                    border-left: 0px none rgba(0, 0, 0, 0.870588);
+                    font: normal normal normal normal 15px / 21px Roboto, "Helvetica Neue", Arial, sans-serif;
+                    outline: rgba(0, 0, 0, 0.870588) none 0px;
+                    padding: 16px 8px 16px 24px;
+                }
+
+                /*#TD_55, #TD_63, #TD_71*/
+
+                #DIV_56, #DIV_64, #DIV_72, #DIV_80 {
+                    box-sizing: border-box;
+                    color: rgba(0, 0, 0, 0.870588);
+                    height: 23px;
+                    letter-spacing: -0.1px;
+                    text-align: left;
+                    text-rendering: optimizeLegibility;
+                    text-size-adjust: 100%;
+                    width: 332px;
+                    column-rule-color: rgba(0, 0, 0, 0.870588);
+                    perspective-origin: 166px 11.5px;
+                    transform-origin: 166px 11.5px;
+                    border: 0px none rgba(0, 0, 0, 0.870588);
+                    font: normal normal normal normal 17px / 23.8px Roboto, "Helvetica Neue", Arial, sans-serif;
+                    outline: rgba(0, 0, 0, 0.870588) none 0px;
+                }
+
+                /*#DIV_56, #DIV_64, #DIV_72, #DIV_80*/
+
+                #DIV_57, #DIV_65, #DIV_73, #DIV_81 {
+                    box-sizing: border-box;
+                    color: rgba(0, 0, 0, 0.541176);
+                    height: 32px;
+                    letter-spacing: -0.1px;
+                    max-width: 360px;
+                    text-align: left;
+                    text-rendering: optimizeLegibility;
+                    text-size-adjust: 100%;
+                    width: 332px;
+                    column-rule-color: rgba(0, 0, 0, 0.541176);
+                    perspective-origin: 166px 16px;
+                    transform-origin: 166px 16px;
+                    border: 0px none rgba(0, 0, 0, 0.541176);
+                    font: normal normal normal normal 12px / 16.8px Roboto, "Helvetica Neue", Arial, sans-serif;
+                    margin: 8px 0px 0px;
+                    outline: rgba(0, 0, 0, 0.541176) none 0px;
+                }
+
+                /*#DIV_57, #DIV_65, #DIV_73, #DIV_81*/
+
+                #TD_58, #TD_66, #TD_74 {
+                    box-sizing: border-box;
+                    color: rgba(0, 0, 0, 0.870588);
+                    height: 96px;
+                    letter-spacing: -0.1px;
+                    text-align: left;
+                    text-rendering: optimizeLegibility;
+                    text-size-adjust: 100%;
+                    vertical-align: middle;
+                    width: 120px;
+                    column-rule-color: rgba(0, 0, 0, 0.870588);
+                    perspective-origin: 60px 48px;
+                    transform-origin: 60px 48px;
+                    border-top: 0px none rgba(0, 0, 0, 0.870588);
+                    border-right: 0px none rgba(0, 0, 0, 0.870588);
+                    border-bottom: 1px solid rgba(0, 0, 0, 0.117647);
+                    border-left: 0px none rgba(0, 0, 0, 0.870588);
+                    font: normal normal normal normal 15px / 21px Roboto, "Helvetica Neue", Arial, sans-serif;
+                    outline: rgba(0, 0, 0, 0.870588) none 0px;
+                    padding: 16px 8px;
+                }
+
+                /*#TD_58, #TD_66, #TD_74*/
+
+                #TD_59, #TD_60, #TD_67, #TD_75 {
+                    box-sizing: border-box;
+                    color: rgba(0, 0, 0, 0.870588);
+                    height: 96px;
+                    letter-spacing: -0.1px;
+                    text-align: right;
+                    text-rendering: optimizeLegibility;
+                    text-size-adjust: 100%;
+                    vertical-align: middle;
+                    width: 120px;
+                    column-rule-color: rgba(0, 0, 0, 0.870588);
+                    perspective-origin: 60px 48px;
+                    transform-origin: 60px 48px;
+                    border-top: 0px none rgba(0, 0, 0, 0.870588);
+                    border-right: 0px none rgba(0, 0, 0, 0.870588);
+                    border-bottom: 1px solid rgba(0, 0, 0, 0.117647);
+                    border-left: 0px none rgba(0, 0, 0, 0.870588);
+                    font: normal normal normal normal 15px / 21px Roboto, "Helvetica Neue", Arial, sans-serif;
+                    outline: rgba(0, 0, 0, 0.870588) none 0px;
+                    padding: 16px 8px;
+                }
+
+                /*#TD_59, #TD_60, #TD_67, #TD_75*/
+
+                #TD_61, #TD_69, #TD_77 {
+                    box-sizing: border-box;
+                    color: rgba(0, 0, 0, 0.870588);
+                    height: 96px;
+                    letter-spacing: -0.1px;
+                    text-align: right;
+                    text-rendering: optimizeLegibility;
+                    text-size-adjust: 100%;
+                    vertical-align: middle;
+                    width: 120px;
+                    column-rule-color: rgba(0, 0, 0, 0.870588);
+                    perspective-origin: 60px 48px;
+                    transform-origin: 60px 48px;
+                    border-top: 0px none rgba(0, 0, 0, 0.870588);
+                    border-right: 0px none rgba(0, 0, 0, 0.870588);
+                    border-bottom: 1px solid rgba(0, 0, 0, 0.117647);
+                    border-left: 0px none rgba(0, 0, 0, 0.870588);
+                    font: normal normal normal normal 15px / 21px Roboto, "Helvetica Neue", Arial, sans-serif;
+                    outline: rgba(0, 0, 0, 0.870588) none 0px;
+                    padding: 16px 24px 16px 8px;
+                }
+
+                /*#TD_61, #TD_69, #TD_77*/
+
+                #TD_68, #TD_76 {
+                    box-sizing: border-box;
+                    color: rgba(0, 0, 0, 0.870588);
+                    height: 96px;
+                    letter-spacing: -0.1px;
+                    text-align: right;
+                    text-rendering: optimizeLegibility;
+                    text-size-adjust: 100%;
+                    vertical-align: middle;
+                    width: 120px;
+                    column-rule-color: rgba(0, 0, 0, 0.870588);
+                    perspective-origin: 60px 48px;
+                    transform-origin: 60px 48px;
+                    border-top: 0px none rgba(0, 0, 0, 0.870588);
+                    border-right: 0px none rgba(0, 0, 0, 0.870588);
+                    border-bottom: 1px solid rgba(0, 0, 0, 0.117647);
+                    border-left: 0px none rgba(0, 0, 0, 0.870588);
+                    font: normal normal normal normal 15px / 21px Roboto, "Helvetica Neue", Arial, sans-serif;
+                    outline: rgba(0, 0, 0, 0.870588) none 0px;
+                    padding: 16px 8px;
+                }
+
+                /*#TD_68, #TD_76*/
+
+                #TR_78 {
+                    box-sizing: border-box;
+                    color: rgba(0, 0, 0, 0.870588);
+                    height: 95px;
+                    letter-spacing: -0.1px;
+                    text-align: left;
+                    text-rendering: optimizeLegibility;
+                    text-size-adjust: 100%;
+                    vertical-align: middle;
+                    width: 844px;
+                    column-rule-color: rgba(0, 0, 0, 0.870588);
+                    perspective-origin: 422px 47.5px;
+                    transform-origin: 422px 47.5px;
+                    border: 0px none rgba(0, 0, 0, 0.870588);
+                    font: normal normal normal normal 15px / 21px Roboto, "Helvetica Neue", Arial, sans-serif;
+                    outline: rgba(0, 0, 0, 0.870588) none 0px;
+                }
+
+                /*#TR_78*/
+
+                #TD_79 {
+                    box-sizing: border-box;
+                    color: rgba(0, 0, 0, 0.870588);
+                    height: 95px;
+                    letter-spacing: -0.1px;
+                    text-align: left;
+                    text-rendering: optimizeLegibility;
+                    text-size-adjust: 100%;
+                    vertical-align: middle;
+                    width: 364px;
+                    column-rule-color: rgba(0, 0, 0, 0.870588);
+                    perspective-origin: 182px 47.5px;
+                    transform-origin: 182px 47.5px;
+                    border: 0px none rgba(0, 0, 0, 0.870588);
+                    font: normal normal normal normal 15px / 21px Roboto, "Helvetica Neue", Arial, sans-serif;
+                    outline: rgba(0, 0, 0, 0.870588) none 0px;
+                    padding: 16px 8px 16px 24px;
+                }
+
+                /*#TD_79*/
+
+                #TD_82 {
+                    box-sizing: border-box;
+                    color: rgba(0, 0, 0, 0.870588);
+                    height: 95px;
+                    letter-spacing: -0.1px;
+                    text-align: left;
+                    text-rendering: optimizeLegibility;
+                    text-size-adjust: 100%;
+                    vertical-align: middle;
+                    width: 120px;
+                    column-rule-color: rgba(0, 0, 0, 0.870588);
+                    perspective-origin: 60px 47.5px;
+                    transform-origin: 60px 47.5px;
+                    border: 0px none rgba(0, 0, 0, 0.870588);
+                    font: normal normal normal normal 15px / 21px Roboto, "Helvetica Neue", Arial, sans-serif;
+                    outline: rgba(0, 0, 0, 0.870588) none 0px;
+                    padding: 16px 8px;
+                }
+
+                /*#TD_82*/
+
+                #TD_83, #TD_84 {
+                    box-sizing: border-box;
+                    color: rgba(0, 0, 0, 0.870588);
+                    height: 95px;
+                    letter-spacing: -0.1px;
+                    text-align: right;
+                    text-rendering: optimizeLegibility;
+                    text-size-adjust: 100%;
+                    vertical-align: middle;
+                    width: 120px;
+                    column-rule-color: rgba(0, 0, 0, 0.870588);
+                    perspective-origin: 60px 47.5px;
+                    transform-origin: 60px 47.5px;
+                    border: 0px none rgba(0, 0, 0, 0.870588);
+                    font: normal normal normal normal 15px / 21px Roboto, "Helvetica Neue", Arial, sans-serif;
+                    outline: rgba(0, 0, 0, 0.870588) none 0px;
+                    padding: 16px 8px;
+                }
+
+                /*#TD_83, #TD_84*/
+
+                #TD_85 {
+                    box-sizing: border-box;
+                    color: rgba(0, 0, 0, 0.870588);
+                    height: 95px;
+                    letter-spacing: -0.1px;
+                    text-align: right;
+                    text-rendering: optimizeLegibility;
+                    text-size-adjust: 100%;
+                    vertical-align: middle;
+                    width: 120px;
+                    column-rule-color: rgba(0, 0, 0, 0.870588);
+                    perspective-origin: 60px 47.5px;
+                    transform-origin: 60px 47.5px;
+                    border: 0px none rgba(0, 0, 0, 0.870588);
+                    font: normal normal normal normal 15px / 21px Roboto, "Helvetica Neue", Arial, sans-serif;
+                    outline: rgba(0, 0, 0, 0.870588) none 0px;
+                    padding: 16px 24px 16px 8px;
+                }
+
+                /*#TD_85*/
+
+                #TABLE_86 {
+                    box-sizing: border-box;
+                    color: rgba(0, 0, 0, 0.870588);
+                    height: 255px;
+                    letter-spacing: -0.1px;
+                    text-align: left;
+                    text-rendering: optimizeLegibility;
+                    text-size-adjust: 100%;
+                    width: 844px;
+                    column-rule-color: rgba(0, 0, 0, 0.870588);
+                    perspective-origin: 422px 127.5px;
+                    transform-origin: 422px 127.5px;
+                    border: 0px none rgba(0, 0, 0, 0.870588);
+                    border-spacing: 0px 0px;
+                    font: normal normal normal normal 13px / 18.2px Roboto, "Helvetica Neue", Arial, sans-serif;
+                    margin: 32px 0px 96px;
+                    outline: rgba(0, 0, 0, 0.870588) none 0px;
+                }
+
+                /*#TABLE_86*/
+
+                #TBODY_87 {
+                    box-sizing: border-box;
+                    color: rgba(0, 0, 0, 0.870588);
+                    height: 255px;
+                    letter-spacing: -0.1px;
+                    text-align: left;
+                    text-rendering: optimizeLegibility;
+                    text-size-adjust: 100%;
+                    width: 844px;
+                    column-rule-color: rgba(0, 0, 0, 0.870588);
+                    perspective-origin: 422px 127.5px;
+                    transform-origin: 422px 127.5px;
+                    border: 0px none rgba(0, 0, 0, 0.870588);
+                    font: normal normal normal normal 13px / 18.2px Roboto, "Helvetica Neue", Arial, sans-serif;
+                    outline: rgba(0, 0, 0, 0.870588) none 0px;
+                }
+
+                /*#TBODY_87*/
+
+                #TR_88, #TR_91 {
+                    box-sizing: border-box;
+                    color: rgba(0, 0, 0, 0.870588);
+                    height: 39px;
+                    letter-spacing: -0.1px;
+                    text-align: left;
+                    text-rendering: optimizeLegibility;
+                    text-size-adjust: 100%;
+                    vertical-align: middle;
+                    width: 844px;
+                    column-rule-color: rgba(0, 0, 0, 0.870588);
+                    perspective-origin: 422px 19.5px;
+                    transform-origin: 422px 19.5px;
+                    border: 0px none rgba(0, 0, 0, 0.870588);
+                    font: normal normal normal normal 13px / 18.2px Roboto, "Helvetica Neue", Arial, sans-serif;
+                    outline: rgba(0, 0, 0, 0.870588) none 0px;
+                }
+
+                /*#TR_88, #TR_91*/
+
+                #TD_89, #TD_92 {
+                    box-sizing: border-box;
+                    color: rgba(0, 0, 0, 0.541176);
+                    height: 39px;
+                    letter-spacing: -0.1px;
+                    text-align: left;
+                    text-rendering: optimizeLegibility;
+                    text-size-adjust: 100%;
+                    vertical-align: middle;
+                    width: 352px;
+                    column-rule-color: rgba(0, 0, 0, 0.541176);
+                    perspective-origin: 176px 19.5px;
+                    transform-origin: 176px 19.5px;
+                    border: 0px none rgba(0, 0, 0, 0.541176);
+                    font: normal normal 500 normal 17px / 23.8px Roboto, "Helvetica Neue", Arial, sans-serif;
+                    outline: rgba(0, 0, 0, 0.541176) none 0px;
+                    padding: 8px;
+                }
+
+                /*#TD_89, #TD_92*/
+
+                #TD_90, #TD_93 {
+                    box-sizing: border-box;
+                    color: rgba(0, 0, 0, 0.541176);
+                    height: 39px;
+                    letter-spacing: -0.1px;
+                    text-align: right;
+                    text-rendering: optimizeLegibility;
+                    text-size-adjust: 100%;
+                    vertical-align: middle;
+                    width: 492px;
+                    column-rule-color: rgba(0, 0, 0, 0.541176);
+                    perspective-origin: 246px 19.5px;
+                    transform-origin: 246px 19.5px;
+                    border: 0px none rgba(0, 0, 0, 0.541176);
+                    font: normal normal 500 normal 17px / 23.8px Roboto, "Helvetica Neue", Arial, sans-serif;
+                    outline: rgba(0, 0, 0, 0.541176) none 0px;
+                    padding: 8px;
+                }
+
+                /*#TD_90, #TD_93*/
+
+                #TR_94 {
+                    box-sizing: border-box;
+                    color: rgba(0, 0, 0, 0.870588);
+                    height: 63px;
+                    letter-spacing: -0.1px;
+                    text-align: left;
+                    text-rendering: optimizeLegibility;
+                    text-size-adjust: 100%;
+                    vertical-align: middle;
+                    width: 844px;
+                    column-rule-color: rgba(0, 0, 0, 0.870588);
+                    perspective-origin: 422px 31.5px;
+                    transform-origin: 422px 31.5px;
+                    border: 0px none rgba(0, 0, 0, 0.870588);
+                    font: normal normal normal normal 13px / 18.2px Roboto, "Helvetica Neue", Arial, sans-serif;
+                    outline: rgba(0, 0, 0, 0.870588) none 0px;
+                }
+
+                /*#TR_94*/
+
+                #TD_95 {
+                    box-sizing: border-box;
+                    color: rgba(0, 0, 0, 0.541176);
+                    height: 63px;
+                    letter-spacing: -0.1px;
+                    text-align: left;
+                    text-rendering: optimizeLegibility;
+                    text-size-adjust: 100%;
+                    vertical-align: middle;
+                    width: 352px;
+                    column-rule-color: rgba(0, 0, 0, 0.541176);
+                    perspective-origin: 176px 31.5px;
+                    transform-origin: 176px 31.5px;
+                    border: 0px none rgba(0, 0, 0, 0.541176);
+                    font: normal normal 500 normal 17px / 23.8px Roboto, "Helvetica Neue", Arial, sans-serif;
+                    outline: rgba(0, 0, 0, 0.541176) none 0px;
+                    padding: 8px 8px 32px;
+                }
+
+                /*#TD_95*/
+
+                #TD_96 {
+                    box-sizing: border-box;
+                    color: rgba(0, 0, 0, 0.541176);
+                    height: 63px;
+                    letter-spacing: -0.1px;
+                    text-align: right;
+                    text-rendering: optimizeLegibility;
+                    text-size-adjust: 100%;
+                    vertical-align: middle;
+                    width: 492px;
+                    column-rule-color: rgba(0, 0, 0, 0.541176);
+                    perspective-origin: 246px 31.5px;
+                    transform-origin: 246px 31.5px;
+                    border: 0px none rgba(0, 0, 0, 0.541176);
+                    font: normal normal 500 normal 17px / 23.8px Roboto, "Helvetica Neue", Arial, sans-serif;
+                    outline: rgba(0, 0, 0, 0.541176) none 0px;
+                    padding: 8px 8px 32px;
+                }
+
+                /*#TD_96*/
+
+                #TR_97 {
+                    box-sizing: border-box;
+                    color: rgba(0, 0, 0, 0.870588);
+                    height: 114px;
+                    letter-spacing: -0.1px;
+                    text-align: left;
+                    text-rendering: optimizeLegibility;
+                    text-size-adjust: 100%;
+                    vertical-align: middle;
+                    width: 844px;
+                    column-rule-color: rgba(0, 0, 0, 0.870588);
+                    perspective-origin: 422px 57px;
+                    transform-origin: 422px 57px;
+                    border: 0px none rgba(0, 0, 0, 0.870588);
+                    font: normal normal normal normal 13px / 18.2px Roboto, "Helvetica Neue", Arial, sans-serif;
+                    outline: rgba(0, 0, 0, 0.870588) none 0px;
+                }
+
+                /*#TR_97*/
+
+                #TD_98 {
+                    box-sizing: border-box;
+                    height: 114px;
+                    letter-spacing: -0.1px;
+                    text-align: left;
+                    text-rendering: optimizeLegibility;
+                    text-size-adjust: 100%;
+                    vertical-align: middle;
+                    width: 352px;
+                    perspective-origin: 176px 57px;
+                    transform-origin: 176px 57px;
+                    border-top: 1px solid rgba(0, 0, 0, 0.117647);
+                    font: normal normal 300 normal 35px / 49px Roboto, "Helvetica Neue", Arial, sans-serif;
+                    padding: 32px 8px;
+                }
+
+                /*#TD_98*/
+
+                #TD_99 {
+                    box-sizing: border-box;
+                    height: 114px;
+                    letter-spacing: -0.1px;
+                    text-align: right;
+                    text-rendering: optimizeLegibility;
+                    text-size-adjust: 100%;
+                    vertical-align: middle;
+                    width: 492px;
+                    perspective-origin: 246px 57px;
+                    transform-origin: 246px 57px;
+                    border-top: 1px solid rgba(0, 0, 0, 0.117647);
+                    font: normal normal 300 normal 35px / 49px Roboto, "Helvetica Neue", Arial, sans-serif;
+                    padding: 32px 8px;
+                }
+
+                /*#TD_99*/
+
+                #DIV_100 {
+                    box-sizing: border-box;
+                    color: rgba(0, 0, 0, 0.870588);
+                    height: 99px;
+                    letter-spacing: -0.1px;
+                    text-rendering: optimizeLegibility;
+                    text-size-adjust: 100%;
+                    width: 844px;
+                    column-rule-color: rgba(0, 0, 0, 0.870588);
+                    perspective-origin: 422px 49.5px;
+                    transform-origin: 422px 49.5px;
+                    border: 0px none rgba(0, 0, 0, 0.870588);
+                    font: normal normal normal normal 13px / 18.2px Roboto, "Helvetica Neue", Arial, sans-serif;
+                    outline: rgba(0, 0, 0, 0.870588) none 0px;
+                }
+
+                /*#DIV_100*/
+
+                #DIV_101 {
+                    box-sizing: border-box;
+                    color: rgba(0, 0, 0, 0.870588);
+                    height: 21px;
+                    letter-spacing: -0.1px;
+                    text-rendering: optimizeLegibility;
+                    text-size-adjust: 100%;
+                    width: 844px;
+                    column-rule-color: rgba(0, 0, 0, 0.870588);
+                    perspective-origin: 422px 10.5px;
+                    transform-origin: 422px 10.5px;
+                    border: 0px none rgba(0, 0, 0, 0.870588);
+                    font: normal normal 500 normal 15px / 21px Roboto, "Helvetica Neue", Arial, sans-serif;
+                    margin: 0px 0px 24px;
+                    outline: rgba(0, 0, 0, 0.870588) none 0px;
+                }
+
+                /*#DIV_101*/
+
+                #DIV_102 {
+                    box-sizing: border-box;
+                    color: rgba(0, 0, 0, 0.870588);
+                    display: flex;
+                    height: 54px;
+                    letter-spacing: -0.1px;
+                    text-rendering: optimizeLegibility;
+                    text-size-adjust: 100%;
+                    width: 844px;
+                    column-rule-color: rgba(0, 0, 0, 0.870588);
+                    align-content: flex-start;
+                    align-items: flex-start;
+                    perspective-origin: 422px 27px;
+                    transform-origin: 422px 27px;
+                    border: 0px none rgba(0, 0, 0, 0.870588);
+                    font: normal normal normal normal 13px / 18.2px Roboto, "Helvetica Neue", Arial, sans-serif;
+                    outline: rgba(0, 0, 0, 0.870588) none 0px;
+                }
+
+                /*#DIV_102*/
+
+                #DIV_103 {
+                    box-sizing: border-box;
+                    color: rgb(255, 255, 255);
+                    display: flex;
+                    height: 32px;
+                    letter-spacing: -0.1px;
+                    max-width: 100%;
+                    min-height: auto;
+                    min-width: 32px;
+                    text-rendering: optimizeLegibility;
+                    text-size-adjust: 100%;
+                    width: 32px;
+                    column-rule-color: rgb(255, 255, 255);
+                    align-content: center;
+                    align-items: center;
+                    align-self: flex-start;
+                    justify-content: center;
+                    perspective-origin: 16px 16px;
+                    transform-origin: 16px 16px;
+                    background: rgb(3, 155, 229) none repeat scroll 0% 0% / auto padding-box border-box;
+                    border: 0px none rgb(255, 255, 255);
+                    border-radius: 2px 2px 2px 2px;
+                    font: normal normal 500 normal 17px / 23.8px Roboto, "Helvetica Neue", Arial, sans-serif;
+                    margin: 0px 24px 0px 0px;
+                    outline: rgb(255, 255, 255) none 0px;
+                    overflow: hidden;
+                }
+
+                /*#DIV_103*/
+
+                #DIV_104 {
+                    box-sizing: border-box;
+                    color: rgb(255, 255, 255);
+                    height: 23px;
+                    letter-spacing: -0.1px;
+                    max-width: 100%;
+                    min-height: auto;
+                    min-width: auto;
+                    text-rendering: optimizeLegibility;
+                    text-size-adjust: 100%;
+                    width: 9.25px;
+                    column-rule-color: rgb(255, 255, 255);
+                    align-self: center;
+                    perspective-origin: 4.625px 11.5px;
+                    transform-origin: 4.625px 11.5px;
+                    border: 0px none rgb(255, 255, 255);
+                    font: normal normal 500 normal 17px / 23.8px Roboto, "Helvetica Neue", Arial, sans-serif;
+                    outline: rgb(255, 255, 255) none 0px;
+                }
+
+                /*#DIV_104*/
+
+                #DIV_105 {
+                    box-sizing: border-box;
+                    color: rgba(0, 0, 0, 0.541176);
+                    height: 54px;
+                    letter-spacing: -0.1px;
+                    min-height: auto;
+                    min-width: auto;
+                    text-rendering: optimizeLegibility;
+                    text-size-adjust: 100%;
+                    width: 788px;
+                    column-rule-color: rgba(0, 0, 0, 0.541176);
+                    align-self: flex-start;
+                    perspective-origin: 394px 27px;
+                    transform-origin: 394px 27px;
+                    border: 0px none rgba(0, 0, 0, 0.541176);
+                    font: normal normal 500 normal 12px / 18px Roboto, "Helvetica Neue", Arial, sans-serif;
+                    outline: rgba(0, 0, 0, 0.541176) none 0px;
+                }
+
+                /*#DIV_105*/
+
+                #DIV_106 {
+                    box-sizing: border-box;
+                    color: rgba(0, 0, 0, 0.870588);
+                    display: none;
+                    height: auto;
+                    letter-spacing: -0.1px;
+                    text-rendering: optimizeLegibility;
+                    text-size-adjust: 100%;
+                    width: auto;
+                    column-rule-color: rgba(0, 0, 0, 0.870588);
+                    perspective-origin: 50% 50%;
+                    transform-origin: 50% 50%;
+                    border: 0px none rgba(0, 0, 0, 0.870588);
+                    font: normal normal normal normal 13px / 18.2px Roboto, "Helvetica Neue", Arial, sans-serif;
+                    outline: rgba(0, 0, 0, 0.870588) none 0px;
+                }
+
+                /*#DIV_106*/
+
+                #DIV_107 {
+                    background-position: 0px 0px;
+                    bottom: 0px;
+                    box-sizing: border-box;
+                    color: rgba(0, 0, 0, 0.870588);
+                    height: 4px;
+                    left: 0px;
+                    letter-spacing: -0.1px;
+                    min-height: auto;
+                    min-width: auto;
+                    opacity: 0;
+                    position: absolute;
+                    right: 0px;
+                    text-rendering: optimizeLegibility;
+                    text-size-adjust: 100%;
+                    top: 1687px;
+                    width: 1126px;
+                    z-index: 49;
+                    column-rule-color: rgba(0, 0, 0, 0.870588);
+                    perspective-origin: 563px 2px;
+                    transform-origin: 563px 2px;
+                    background: rgba(0, 0, 0, 0) none repeat scroll 0px 0px / auto padding-box border-box;
+                    border: 0px none rgba(0, 0, 0, 0.870588);
+                    font: normal normal normal normal 13px / 18.2px Roboto, "Helvetica Neue", Arial, sans-serif;
+                    margin: 4px 0px;
+                    outline: rgba(0, 0, 0, 0.870588) none 0px;
+                    transition: background-color 0.2s linear 0s, opacity 0.2s linear 0s;
+                }
+
+                /*#DIV_107*/
+
+                #DIV_108 {
+                    bottom: 2px;
+                    box-sizing: border-box;
+                    color: rgba(0, 0, 0, 0.870588);
+                    height: 4px;
+                    left: 0px;
+                    letter-spacing: -0.1px;
+                    position: absolute;
+                    right: 22px;
+                    text-rendering: optimizeLegibility;
+                    text-size-adjust: 100%;
+                    top: -2px;
+                    width: 1104px;
+                    column-rule-color: rgba(0, 0, 0, 0.870588);
+                    perspective-origin: 552px 2px;
+                    transform-origin: 552px 2px;
+                    background: rgb(170, 170, 170) none repeat scroll 0% 0% / auto padding-box border-box;
+                    border: 0px none rgba(0, 0, 0, 0.870588);
+                    border-radius: 6px 6px 6px 6px;
+                    font: normal normal normal normal 13px / 18.2px Roboto, "Helvetica Neue", Arial, sans-serif;
+                    outline: rgba(0, 0, 0, 0.870588) none 0px;
+                    transition: background-color 0.2s linear 0s, height 0.2s linear 0s, width 0.2s ease-in-out 0s, border-radius 0.2s ease-in-out 0s, -webkit-border-radius 0.2s ease-in-out 0s, -moz-border-radius 0.2s ease-in-out 0s;
+                }
+
+                /*#DIV_108*/
+
+                #DIV_109 {
+                    background-position: 0px 0px;
+                    box-sizing: border-box;
+                    color: rgba(0, 0, 0, 0.870588);
+                    display: none;
+                    height: auto;
+                    letter-spacing: -0.1px;
+                    min-height: auto;
+                    min-width: auto;
+                    opacity: 0;
+                    position: absolute;
+                    right: 0px;
+                    text-rendering: optimizeLegibility;
+                    text-size-adjust: 100%;
+                    top: 0px;
+                    width: 4px;
+                    z-index: 49;
+                    column-rule-color: rgba(0, 0, 0, 0.870588);
+                    perspective-origin: 50% 50%;
+                    transform-origin: 50% 50%;
+                    background: rgba(0, 0, 0, 0) none repeat scroll 0px 0px / auto padding-box border-box;
+                    border: 0px none rgba(0, 0, 0, 0.870588);
+                    font: normal normal normal normal 13px / 18.2px Roboto, "Helvetica Neue", Arial, sans-serif;
+                    margin: 4px 0px;
+                    outline: rgba(0, 0, 0, 0.870588) none 0px;
+                    transition: background-color 0.2s linear 0s, opacity 0.2s linear 0s;
+                }
+
+                /*#DIV_109*/
+
+                #DIV_110 {
+                    box-sizing: border-box;
+                    color: rgba(0, 0, 0, 0.870588);
+                    letter-spacing: -0.1px;
+                    position: absolute;
+                    right: 2px;
+                    text-rendering: optimizeLegibility;
+                    text-size-adjust: 100%;
+                    top: 0px;
+                    width: 4px;
+                    column-rule-color: rgba(0, 0, 0, 0.870588);
+                    perspective-origin: 50% 50%;
+                    transform-origin: 50% 50%;
+                    background: rgb(170, 170, 170) none repeat scroll 0% 0% / auto padding-box border-box;
+                    border: 0px none rgba(0, 0, 0, 0.870588);
+                    border-radius: 6px 6px 6px 6px;
+                    font: normal normal normal normal 13px / 18.2px Roboto, "Helvetica Neue", Arial, sans-serif;
+                    outline: rgba(0, 0, 0, 0.870588) none 0px;
+                    transition: background-color 0.2s linear 0s, height 0.2s linear 0s, width 0.2s ease-in-out 0s, border-radius 0.2s ease-in-out 0s, -webkit-border-radius 0.2s ease-in-out 0s, -moz-border-radius 0.2s ease-in-out 0s;
+                }
+
+                /*#DIV_110*/
+
+
+
+
+            </style>
+
+
+            <div class="invoiceBox">
+
+           		<div id="DIV_3" class="DIV_3">
+           			<div id="DIV_4">
+           				<div id="DIV_5">
+           					<div id="DIV_6">
+           						<div id="DIV_7">
+           							<div id="DIV_8">
+           								<img src="/assets/img/abedins_logo.png" alt="logo" width="200px"><!-- F -->
+           							</div>
+           						</div>
+           						<div id="DIV_9">
+           						</div>
+           						<div id="DIV_10">
+           							<div id="DIV_11">
+           								<strong>Abedin's Garage</strong>
+           							</div>
+            
+
+           							<div id="DIV_12">
+           								Adjacent to the Cox's Bazar police lines (western side), Kolatoli, Cox's Bazar
+           							</div>
+
+
+           							<div id="DIV_13">
+           								<span id="SPAN_14"><br>Phone</span>: 01879 222 111
+           							</div>
+
+
+           							<div id="DIV_15">
+           								<span id="SPAN_16"><br>Email</span>: hello@abedinsgarage.com
+           							</div>
+                              
+
+           							<div id="DIV_17">
+           								<span id="SPAN_18"><br>Web</span>: www.abedinsgarage.com
+           							</div>
+                                
+
+           						</div>
+           					</div>
+           					<div id="DIV_19">
+           						<div id="DIV_20">
+           							<div id="DIV_21">
+           								CLIENT
+           							</div>
+           						</div>
+           						<div id="DIV_22">
+           						</div>
+           						<div id="DIV_23">
+           							<div id="DIV_24">
+										{{invoice.client.name}}
+
+           							</div>
+
+
+           							<div id="DIV_25">
+										{{invoice.client.address || 'n/a' }}
+           							</div>
+
+
+           							<div id="DIV_26">
+           								<span id="SPAN_27">Phone</span> :  {{invoice.client.phone || 'n/a' }}
+           							</div>
+
+
+           							<div id="DIV_28">
+           								<span id="SPAN_29">Email</span>: {{invoice.client.email || 'n/a' }}
+           							</div>
+                                 
+
+           						</div>
+           					</div>
+           				</div>
+           				<table id="TABLE_30">
+           					<tbody id="TBODY_31">
+           						<tr id="TR_32">
+           							<td id="TD_33">
+           								INVOICE
+           							</td>
+           							<td id="TD_34">
+           							{{invoice.number}}
+           							</td>
+           						</tr>
+           						<tr id="TR_35">
+           							<td id="TD_36">
+           								INVOICE DATE
+           							</td>
+           							<td id="TD_37">
+           								Jul 19, 2015
+           							</td>
+           						</tr>
+           						<tr id="TR_38">
+           							<td id="TD_39">
+           								DUE DATE
+           							</td>
+           							<td id="TD_40">
+           								Aug 24, 2015
+           							</td>
+           						</tr>
+           						<tr id="TR_41">
+           							<td id="TD_42">
+           								TOTAL DUE
+           							</td>
+           							<td id="TD_43">
+           								$9,000.00
+           							</td>
+           						</tr>
+           					</tbody>
+           				</table>
+           			</div>
+           			<div id="DIV_44">
+           				<table id="TABLE_45">
+           					<thead id="THEAD_46">
+           						<tr id="TR_47">
+           							<th id="TH_48">
+           								SERVICE
+           							</th>
+           							<th id="TH_49">
+           								UNIT
+           							</th>
+           							<th id="TH_50">
+           								UNIT PRICE
+           							</th>
+           							<th id="TH_51">
+           								QUANTITY
+           							</th>
+           							<th id="TH_52">
+           								TOTAL
+           							</th>
+           						</tr>
+           					</thead>
+           					<tbody id="TBODY_53">
+           						<!-- ngRepeat: service in vm.invoice.services -->
+
+           						<tr id="TR_54" ng-repeat="item in invoice.invoice_products">
+           							<td id="TD_55">
+           								<div id="DIV_56">
+           									  {{item.product_name}}
+           								</div>
+           								<!--<div id="DIV_57">-->
+											<!--{{item.product_name}}-->
+           								<!--</div>-->
+           							</td>
+           							<td id="TD_58">
+           								Hour
+           							</td>
+           							<td id="TD_59">
+										{{item.product_rate | currency:'tk '}}
+           							</td>
+           							<td id="TD_60">
+										{{item.product_quantity}}
+           							</td>
+           							<td id="TD_61">
+										{{item.product_total_price | currency:'tk '}}
+           							</td>
+           						</tr>
+                                
+							
+           					
+
+           					</tbody>
+           				</table>
+           				<table id="TABLE_86">
+           					<tbody id="TBODY_87">
+           						<tr id="TR_88">
+           							<td id="TD_89">
+           								SUBTOTAL
+           							</td>
+           							<td id="TD_90">
+										{{invoice.sub_total_price}}
+           							</td>
+           						</tr>
+                                <!--<tr id="TR_91">-->
+                                <!--<td id="TD_92">-->
+                                <!--TAX-->
+                                <!--</td>-->
+                                <!--<td id="TD_93">-->
+                                <!--$675.60-->
+                                <!--</td>-->
+                                <!--</tr>-->
+           						<tr id="TR_94">
+           							<td id="TD_95">
+           								DISCOUNT
+           							</td>
+           							<td id="TD_96">
+										{{invoice.discount_price}}
+           							</td>
+           						</tr>
+           						<tr id="TR_97">
+           							<td id="TD_98">
+           								TOTAL
+           							</td>
+           							<td id="TD_99">
+										{{invoice.total_price | currency: 'tk '}}
+           							</td>
+           						</tr>
+           					</tbody>
+           				</table>
+           			</div>
+           			<div id="DIV_100">
+           				<!--<div id="DIV_101">-->
+           					<!--Please pay within 15 days. Thank you for your business.-->
+           				<!--</div>-->
+           				<div id="DIV_102">
+           					<div id="DIV_103">
+           						<div id="DIV_104">
+           							!
+           						</div>
+           					</div>
+           					<div id="DIV_101">
+								Please pay within 15 days. Thank you for your business.
+           					</div>
+           				</div>
+           			</div>
+           		</div>
+			</div>
+            <!--<div id="DIV_106">-->
+            <!--</div>-->
+
+            <!--<div id="DIV_107">-->
+            <!--<div id="DIV_108">-->
+            <!--</div>-->
+            <!--</div>-->
+            <!--<div id="DIV_109">-->
+            <!--<div id="DIV_110">-->
+            <!--</div>-->
+            <!--</div>-->
+
+		   
+        </span>
+
+    </div>
+</div>

@@ -1,0 +1,118 @@
+<div class="horizontal-scroll">
+    <div class="form-group select-page-size-wrap ">
+        <label>Rows on page
+            <select id="selectpicker" class="form-control selectpicker show-tick " data-style="btn-primary"
+                    title="Rows on page" selectpicker
+                    dis="true"
+                    ng-model="categories.smartTablePageSize" ng-options="i for i in [2,10,15,20,25]">
+            </select>
+        </label>
+    </div>
+    <table class="table table-hover " st-pipe="categories.callServer" st-table="categories.displayed">
+        <thead>
+        <tr class="sortable">
+            <th st-sort="id">ID</th>
+            <th st-sort="name">Name</th>
+            <th st-sort="status_id">Status</th>
+            <th>Action</th>
+        </tr>
+        <tr>
+            <th>
+                <div class="form-group form-group-sm ">
+
+                    <input ng-model="categories.categorySearch.id" class="input-sm form-control search-input"
+                           st-search="id"/>
+
+                </div>
+            </th>
+            <th>
+                <div class="form-group form-group-sm ">
+
+                    <input ng-model="categories.categorySearch.name"
+                           class="input input-sm form-control form-control-rounded search-input"
+                           st-search="name"/>
+
+                </div>
+            </th>
+            <th>
+
+                <div class="form-group form-group-sm jaSelect">
+
+                    <select
+                            class="form-controls form-control-rounded" title="All" data-style="btn-primary"
+                            data-container="body" ng-model="categories.categorySearch.status"
+                            ng-selectss="categories.statusList"
+                            dis=""
+                            selectpicker
+                            st-input-event="change"
+                            st-search="status.id"
+                            ng-options="item.id as item.name for item in categories.statusList ">
+
+
+                    </select>
+                </div>
+
+            </th>
+            <th></th>
+
+        </tr>
+        </thead>
+
+        <tbody ng-show="!categories.isLoading">
+        <tr ng-repeat="(key, row) in categories.displayed" class="editable-tr-wrap ">
+            <td>
+                <span><span ng-if="row.new" class="badge bg-info">new</span>{{row.id}}</span>
+            </td>
+            <td>
+                <div class="popover-wrapper">
+
+                    <a editable-text="row.name" onbeforesave="categories.update('name',row.id,$data,row.name)">
+                        {{row.name || 'n/a'}}
+                    </a>
+                </div>
+            </td>
+            <td>
+
+                <div class="popover-wrapper">
+
+                    <button class="btn btn-{{(categories.statusList | filter:{id: row.status.id})[0].name }}">
+
+                        <a editable-select="row.status.id"
+                           onbeforesave="categories.update('status_id',row.id,$data,row.status_id)"
+                           e-ng-options="s.id as s.name for s in categories.statusList">
+                            {{ (categories.statusList | filter:{id: row.status.id})[0].name || 'n/a'}}
+                        </a>
+
+                    </button>
+                </div>
+
+            </td>
+            <td>
+                <button class="btn btn-danger  btn-xs" ng-click="categories.removeCategory(row.id,$index)"><i
+                        class="fa fa-trash"></i> Delete
+                </button>
+            </td>
+
+
+        </tr>
+        </tbody>
+        <tbody ng-show="categories.isLoading">
+        <tr>
+            <td colspan="4" class="text-center">Loading ...</td>
+        </tr>
+        </tbody>
+        <tbody ng-show="categories.noData">
+        <tr>
+            <td colspan="4" class="text-center">no data found</td>
+        </tr>
+        </tbody>
+        <tfoot>
+        <tr>
+            <td class="text-center" st-pagination="" st-items-by-page="categories.smartTablePageSize" colspan="4">
+            </td>
+        </tr>
+        </tfoot>
+    </table>
+
+
+</div>

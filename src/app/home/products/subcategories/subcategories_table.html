@@ -1,0 +1,155 @@
+<div class="horizontal-scroll">
+    <div class="form-group select-page-size-wrap ">
+        <label>Rows on page
+            <select id="selectpicker" class="form-control selectpicker show-tick " data-style="btn-primary"
+                    title="Rows on page" selectpicker
+                    dis="true"
+                    ng-model="subcategories.smartTablePageSize" ng-options="i for i in [2,10,15,20,25]">
+            </select>
+        </label>
+    </div>
+    <table class="table table-hover " st-pipe="subcategories.callServer" st-table="subcategories.displayed">
+        <thead>
+        <tr class="sortable">
+            <th st-sort="id">ID</th>
+            <th st-sort="name">Name</th>
+            <th st-sort="category_id">Category</th>
+            <th st-sort="status_id">Status</th>
+            <th>Action</th>
+        </tr>
+        <tr>
+            <th>
+                <div class="form-group form-group-sm ">
+
+                    <input ng-model="subcategories.subcategorySearch.id" class="input-sm form-control search-input"
+                           st-search="id"/>
+
+                </div>
+            </th>
+            <th>
+                <div class="form-group form-group-sm ">
+
+                    <input ng-model="subcategories.subcategorySearch.name"
+                           class="input input-sm form-control form-control-rounded search-input"
+                           st-search="name"/>
+
+                </div>
+            </th>
+            <th>
+
+                <div class="form-group form-group-sm jaSelect">
+
+                    <select
+                            class="form-controls form-control-rounded" title="All Category" data-style="btn-primary"
+                            data-container="body" ng-model="subcategories.subcategorySearch.category"
+                            ng-selectss="subcategories.categoryList"
+                            dis=""
+                            selectpicker
+                            st-input-event="change"
+                            st-search="category.id"
+                            ng-options="item.id as item.name for item in subcategories.categoryList ">
+
+
+                    </select>
+                </div>
+
+            </th>
+            <th>
+
+                <div class="form-group form-group-sm jaSelect">
+
+                    <select
+                            class="form-controls form-control-rounded" title="All" data-style="btn-primary"
+                            data-container="body" ng-model="subcategories.subcategorySearch.status"
+                            ng-selectss="subcategories.statusList"
+                            dis=""
+                            selectpicker
+                            st-input-event="change"
+                            st-search="status.id"
+                            ng-options="item.id as item.name for item in subcategories.statusList ">
+
+
+                    </select>
+                </div>
+
+            </th>
+            <th></th>
+
+        </tr>
+        </thead>
+
+        <tbody ng-show="!subcategories.isLoading">
+        <tr ng-repeat="(key, row) in subcategories.displayed track by $index" class="editable-tr-wrap ">
+            <td>
+                <span><span ng-if="row.new" class="badge bg-info">new</span>{{row.id}}</span>
+
+            </td>
+            <td>
+                <div class="popover-wrapper">
+
+                    <a href="" editable-text="row.name"
+                       onbeforesave="subcategories.update('name',row.id,$data,row.name)">
+                        {{row.name}}
+                    </a>
+                </div>
+            </td>
+            <td>
+
+                <div class="popover-wrapper">
+
+                    <a href="" editable-select="row.category_id"
+                       onbeforesave="subcategories.update('category_id',row.id,$data,row.category_id)"
+                       onaftersave="subcategories.categoryAfterSave(row,$data)"
+                       e-ng-options="c.id as c.name for c in subcategories.categoryList">
+                        {{row.category.name || 'n/a'}}
+                    </a>
+
+
+                </div>
+
+            </td>
+            <td>
+
+                <div class="popover-wrapper">
+
+                    <button class="btn btn-{{(subcategories.statusList | filter:{id: row.status.id})[0].name }}">
+
+                        <a editable-select="row.status.id"
+                           onbeforesave="subcategories.update('status_id',row.id,$data,row.status_id)"
+                           e-ng-options="s.id as s.name for s in subcategories.statusList">
+                            {{ (subcategories.statusList | filter:{id: row.status.id})[0].name }}
+                        </a>
+
+                    </button>
+                </div>
+
+            </td>
+            <td>
+                <button class="btn btn-danger  btn-xs" ng-click="subcategories.removeSubcategory(row.id,$index)"><i
+                        class="fa fa-trash"></i> Delete
+                </button>
+            </td>
+
+
+        </tr>
+        </tbody>
+        <tbody ng-show="subcategories.isLoading">
+        <tr>
+            <td colspan="4" class="text-center">Loading ...</td>
+        </tr>
+        </tbody>
+        <tbody ng-show="subcategories.noData">
+        <tr>
+            <td colspan="4" class="text-center">no data found</td>
+        </tr>
+        </tbody>
+        <tfoot>
+        <tr>
+            <td class="text-center" st-pagination="" st-items-by-page="subcategories.smartTablePageSize" colspan="4">
+            </td>
+        </tr>
+        </tfoot>
+    </table>
+
+
+</div>

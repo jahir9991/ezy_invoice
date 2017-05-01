@@ -1,0 +1,130 @@
+<div class="row">
+
+    <div class="col-md-9">
+        <div class="form-group">
+
+            <label class="checkbox-inline custom-checkbox nowrap">
+                <input type="checkbox" ng-model="jobcard.checkInput"
+                       ng-change="jobcard.checkChange()">
+                <span>With Number</span>
+
+            </label>
+            <button class="btn btn-Active" ng-click="jobcard.refresh()"><i class="fa fa-refresh"></i> Refresh Number
+            </button>
+
+
+        </div>
+
+
+    </div>
+    <div class="col-md-3">
+        <button class="  btn btn-success" data-dismiss="modal" ng-click="jobcard.print('jobcardbox')">
+            <i class="fa fa-print"></i> Print
+        </button>
+
+    </div>
+
+
+</div>
+
+<span id="jobcardbox">
+          <style>
+              .jobcard-box {
+                  max-width: 595px;
+                  margin: auto;
+                  padding: 30px;
+                  border: 1px solid #eee;
+                  box-shadow: 0 0 10px rgba(0, 0, 0, .15);
+                  font-size: 16px;
+                  line-height: 24px;
+                  font-family: 'Helvetica Neue', 'Helvetica', Helvetica, Arial, sans-serif;
+                  color: #555;
+                  min-height: 842px;
+                  min-width: 595px;
+              }
+
+              .jobcard-box table {
+                  width: 100%;
+                  line-height: inherit;
+                  text-align: left;
+                  padding: 2px;
+              }
+
+              .jobcard-box table tr.heading td {
+                  background: #35465c;
+                  /*border-bottom: 1px solid #ddd;*/
+                  color: whitesmoke;
+                  font-weight: bold;
+                  line-height: 2;
+                  padding: 5px;
+                  text-align: center;
+              }
+
+              .jobcard-box table tr.item td {
+                  background: white;
+                  border: 1px solid black;
+                  height: 550px;
+
+              }
+             
+
+          </style>
+          <div class="jobcard-box">
+              <table>
+                  <tr>   <td>abedins garage</td>
+                      
+                           <td> jobcard #  <span ng-if="jobcard.checkInput">{{jobcard.number}} </span> </td>
+                  </tr>
+              </table>
+
+
+              <table cellpadding="0" cellspacing="0">
+                  
+                  <tr class="heading">
+                      <td>
+                          #
+                      </td>
+                      <td>
+                          Description
+                      </td>
+
+                      <td>
+                          Qty
+                      </td>
+                      <td>
+                          Amount
+                      </td>
+                      <td>
+                          Remarks
+                      </td>
+                  </tr>
+
+                  <tr class="item" style="text-align: center; ">
+                      <td>
+                         
+                      </td>
+                      <td>
+                          {{item.product_quantity}}
+                      </td>
+
+                      <td>
+                          {{item.product_rate | currency:'tk '}}
+                      </td>
+                      <td>
+                          {{item.product_total_price | currency:'tk '}}
+                      </td>  <td>
+                          {{item.product_total_price | currency:'tk '}}
+                      </td>
+                  </tr>
+
+
+
+               
+              </table>
+                             <br>
+              <div style="bottom: 10px;">
+                  <h5>note:</h5>
+              </div>
+
+          </div>
+      </span>

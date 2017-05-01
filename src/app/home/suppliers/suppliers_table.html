@@ -1,0 +1,199 @@
+<div class="horizontal-scroll">
+    <div class="form-group select-page-size-wrap ">
+        <label>Rows on page
+            <select id="selectpicker" class="form-control selectpicker show-tick " data-style="btn-primary"
+                    title="Rows on page" selectpicker
+                    dis="true"
+                    ng-model="suppliers.smartTablePageSize" ng-options="i for i in suppliers.pages">
+            </select>
+        </label>
+    </div>
+    <table class="table table-hover  table-responsive" st-pipe="suppliers.callServer" st-table="suppliers.displayed">
+        <thead>
+        <tr class="sortable">
+            <th st-sort="id">ID</th>
+            <th st-sort="name">Name</th>
+            <th st-sort="email">Email</th>
+            <th st-sort="phone">Phone</th>
+            <th st-sort="address">Address</th>
+            <th st-sort="status_id">Status</th>
+            <th>Action</th>
+        </tr>
+        <tr>
+            <th>
+                <div class="form-group form-group-sm ">
+
+                    <input ng-model="suppliers.supplierSearch.id" class="input-sm form-control search-input"
+                           st-search="id"/>
+
+                </div>
+            </th>
+            <th>
+                <div class="form-group form-group-sm ">
+
+                    <input ng-model="suppliers.supplierSearch.name"
+                           class="input input-sm form-control form-control-rounded search-input"
+                           st-search="name"/>
+
+                </div>
+            </th>
+
+            <th>
+                <div class="form-group form-group-sm ">
+
+                    <input ng-model="suppliers.supplierSearch.email"
+                           class="input input-sm form-control form-control-rounded search-input"
+                           st-search="email"/>
+
+                </div>
+            </th>
+            <th>
+                <div class="form-group form-group-sm ">
+
+                    <input ng-model="suppliers.supplierSearch.phone"
+                           class="input input-sm form-control form-control-rounded search-input"
+                           st-search="phone"/>
+
+                </div>
+            </th>
+            <th>
+                <div class="form-group form-group-sm ">
+
+                    <input ng-model="suppliers.supplierSearch.address"
+                           class="input input-sm form-control form-control-rounded search-input"
+                           st-search="address"/>
+
+                </div>
+            </th>
+            <th>
+                <div class="form-group form-group-sm jaSelect">
+
+                    <select
+                            class="form-controls form-control-rounded" title="All" data-style="btn-primary"
+                            data-container="body" ng-model="suppliers.supplierSearch.status"
+                            ng-selectss="suppliers.statusList"
+                            dis=""
+                            selectpicker
+                            st-input-event="change"
+                            st-search="status.id"
+                            ng-options="item.id as item.name for item in suppliers.statusList ">
+
+
+                    </select>
+                </div>
+            </th>
+            <th></th>
+
+        </tr>
+        </thead>
+
+        <tbody ng-show="!suppliers.isLoading">
+        <tr ng-repeat="(key, row) in suppliers.displayed" class="editable-tr-wrap ">
+            <td>
+                <div>
+                    <span>{{row.id || 'n/a'}}</span>
+                </div>
+            </td>
+            <td>
+                <div class="popover-wrapper">
+
+                    <a href="" editable-text="row.name" e-required
+                       onbeforesave="suppliers.update('name',row.id,$data)">
+                        {{row.name || 'n/a'}}
+                    </a>
+                </div>
+            </td>
+
+            <td>
+                <div class="popover-wrapper">
+                    <a href="" editable-email="row.email" e-required
+                       onbeforesave="suppliers.update('email',row.id,$data)">
+                        {{row.email || 'n/a'}}
+                    </a>
+                </div>
+            </td>
+            <td>
+                <div class="popover-wrapper">
+
+                    <a href="" editable-tel="row.phone" e-required
+                       e-pattern="\d{6,14}[0-9]"
+                       e-title="+xx"
+                       onbeforesave="suppliers.update('phone',row.id,$data)">
+                        {{row.phone || 'n/a'}}
+                    </a>
+                </div>
+            </td>
+            <td class="bigData">
+                <span
+                        blur="true">
+                <div class="popover-wrapper">
+                    <a href="" editable-textarea="row.address" e-required
+                       onbeforesave="suppliers.update('address',row.id,$data)">
+                        {{row.address || 'n/a'}}
+                    </a>
+                </div>
+                </span>
+            </td>
+            <td>
+
+                <div class="popover-wrapper">
+
+
+                    <a class="btn btn-{{(suppliers.statusList | filter:{id: row.status.id})[0].name }}"
+                       editable-select="row.status.id" e-required
+                       onbeforesave="suppliers.update('status_id',row.id,$data,$index)"
+                       e-ng-options="s.id as s.name for s in suppliers.statusList">
+                        {{ (suppliers.statusList | filter:{id: row.status.id})[0].name || 'n/a'}}
+                    </a>
+
+
+                </div>
+
+            </td>
+            <td>
+
+                <a class="btn btn-info  btn-xs " id="view-{{row.id}}" ng-click="suppliers.viewSingleSupplier(row)">
+                    <i class="fa fa-eye"></i> View
+                </a>
+
+
+                <a class="btn btn-danger  btn-xs inline" ng-click="suppliers.removeSupplier(row.id,$index)">
+                    <i class="fa fa-trash"></i> Delete
+                </a>
+
+            </td>
+
+
+        </tr>
+        </tbody>
+        <tbody ng-show="suppliers.isLoading">
+        <tr>
+            <td colspan="100%" class="text-center">Loading ...</td>
+        </tr>
+        </tbody>
+        <tbody ng-show="suppliers.noData">
+        <tr>
+            <td colspan="100%" class="text-center">no data found</td>
+        </tr>
+        </tbody>
+        <tfoot>
+        <tr>
+            <td class="text-center" st-pagination="" st-items-by-page="suppliers.smartTablePageSize" colspan="100%">
+            </td>
+        </tr>
+        </tfoot>
+    </table>
+
+
+</div>
+<script type="text/ng-template" id="templateId">
+
+
+    <h4 class="modal-title text-center" id="creatorModel">Supplier Detail</h4></div>
+
+
+    </div>
+    </div>
+
+
+</script>

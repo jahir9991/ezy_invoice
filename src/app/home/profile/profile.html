@@ -1,0 +1,274 @@
+<div ba-panel ba-panel-class="profile-page">
+    <div class="panel-content">
+        <div class="row ">
+            <div class="col-md-8">
+                <div class="progress-info">Your profile is 10% Complete</div>
+
+                <div class="progress">
+                    <div class="progress-bar progress-bar-primary progress-bar-striped active" role="progressbar"
+                         aria-valuenow="10" aria-valuemin="0" aria-valuemax="100" style="width: 10%">
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <!--<button type="button" class="btn btn-primary btn-with-icon save-profile"-->
+                <!--ng-click="profile.updateNow()">-->
+                <!--<i class="ion-android-checkmark-circle"></i>Update now-->
+                <!--</button>-->
+
+            </div>
+        </div>
+
+
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-md-8">
+        <div ba-panel
+             ba-panel-class="with-scroll horizontal-tabs tabs-panel medium-panel ">
+            <uib-tabset active="$tabSetStatus.activeTab">
+                <uib-tab heading="Profile">
+                    <div class="row">
+                        <div class="col-md-3">
+                            <div class="userpic">
+                                <div class="userpic-wrapper">
+                                    <img ng-src="{{ profile.userInfo.image  | appImage }}" ng-click="profile.uploadPicture()">
+                                </div>
+                                <i class="ion-ios-close-outline" ng-click="profile.removePicture()"
+                                   ng-if="!profile.noPicture"></i>
+                                <a href class="change-userpic" ng-click="profile.uploadPicture()">Change Profile
+                                    Picture</a>
+                                <input type="file" ng-show="false" id="uploadFile"
+                                       ng-file-select="onFileSelect($files)">
+                            </div>
+                        </div>  <!--profile image-->
+                        <div class="col-md-9">
+                            <h3 class="with-line">General Information</h3>
+
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class=" row clearfix">
+                                        <label class="col-sm-5 control-label">First Name</label>
+
+                                        <div class="col-sm-7">
+                                            <p>{{ profile.userInfo.first_name}}</p>
+                                        </div>
+                                    </div>
+                                    <div class=" row clearfix">
+                                        <label class="col-sm-5 control-label">Last Name</label>
+
+                                        <div class="col-sm-7">
+                                            <p>{{ profile.userInfo.last_name}}</p>
+                                        </div>
+                                    </div>
+                                    <div class=" row clearfix">
+                                        <label class="col-sm-5 control-label">Joined Date</label>
+
+                                        <div class="col-sm-7">
+                                            <p>{{ profile.userInfo.created_at}}</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class=" row clearfix">
+                                        <label class="col-sm-5 control-label">Role</label>
+
+                                        <div class="col-sm-7">
+                                            <p>{{ profile.userInfo.role }}</p>
+                                        </div>
+                                    </div>
+                                    <div class=" row clearfix">
+                                        <label for="inputPhone" class="col-sm-5 control-label">Designation</label>
+
+                                        <div class="col-sm-7">
+                                            <p>{{ profile.userInfo.designation }}</p>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+
+                            <h3 class="with-line">Contact Information</h3>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class=" row clearfix">
+                                        <label for="inputEmail3" class="col-sm-5 control-label">Phone</label>
+
+                                        <div class="col-sm-7">
+                                            <p>{{ profile.userInfo.phone}}</p>
+                                        </div>
+                                    </div>
+                                    <div class=" row clearfix">
+                                        <label class="col-sm-5 control-label">Email</label>
+
+                                        <div class="col-sm-7">
+                                            <p>{{ profile.userInfo.email }}</p>
+                                        </div>
+                                    </div>
+
+                                </div>
+
+                            </div>
+                        </div>              <!--information -->
+
+
+                    </div>
+
+
+                </uib-tab>
+                <uib-tab heading="Update Profile">
+                    <form>
+                        <h3 class="with-line">Update Information</h3>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group row clearfix">
+                                    <label for="inputFirstName" class="col-sm-3 control-label text-center">First
+                                        Name</label>
+
+                                    <div class="col-sm-9">
+                                        <input type="text" class="form-control"
+                                               placeholder="First Name"
+                                               value="{{ profile.userInfo.first_name }}">
+                                    </div>
+                                </div>
+                                <div class="form-group row clearfix">
+                                    <label for="inputLastName" class="col-sm-3 control-label text-center">Last
+                                        Name</label>
+
+                                    <div class="col-sm-9">
+                                        <input type="text" class="form-control" id="inputLastName" placeholder=""
+                                               value="{{profile.userInfo.last_name }}">
+                                    </div>
+                                </div>
+                                <div class="form-group row clearfix">
+                                    <label class="col-sm-3 control-label text-center">Designation</label>
+
+                                    <div class="col-sm-9">
+                                        <input type="text" class="form-control" id="" placeholder="Enter Designation"
+                                               value="{{profile.userInfo.designation}}">
+                                    </div>
+                                </div>
+
+
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group row clearfix">
+                                    <label for="inputEmail" class="col-sm-3 control-label text-center">Email</label>
+                                    <div class="col-sm-9">
+                                        <input type="text" class="form-control" id="inputEmail"
+                                               placeholder="Enter Email"
+                                               value="{{profile.userInfo.email }}">
+                                    </div>
+
+
+                                </div>
+
+                                <div class="form-group row clearfix">
+                                    <label class="col-sm-3 control-label text-center">Phone</label>
+
+                                    <div class="col-sm-9">
+                                        <input type="text" class="form-control" id="phone" placeholder="Enter phone"
+                                               value="{{ profile.userInfo.phone}}">
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                        <div class="form-group row clearfix">
+                            <div class="col-sm-9"></div>
+                            <div class="col-sm-3">
+                                <button type="button" class="btn btn-primary btn-with-icon save-profile"
+                                        ng-click="profile.updateProfile()">
+                                    <i class="ion-android-checkmark-circle"></i>Update Profile
+                                </button>
+                            </div>
+                        </div>
+
+
+                    </form>
+                </uib-tab>
+                <uib-tab ng-init="$dropdownTabActive = 1" class="with-dropdown">
+                    <uib-tab-heading uib-dropdown>
+                        <a uib-dropdown-toggle ng-click="$event.stopPropagation()">
+                            Setting<i class="caret"></i>
+                        </a>
+                        <ul class="dropdown-menu" uib-dropdown-menu>
+                            <li><a ng-click="$dropdownTabActive = 1; $tabSetStatus.activeTab = 3">Password Change</a>
+                            </li>
+                            <li><a ng-click="$dropdownTabActive = 2; $tabSetStatus.activeTab = 3">Notification</a></li>
+                        </ul>
+                    </uib-tab-heading>
+                    <div ng-show="$dropdownTabActive == 1">
+
+                        <h3 class="with-line">Change Password</h3>
+                        <form name="vm.personalInfoForm" novalidate>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-group"
+                                         ng-class="{'has-error': vm.personalInfoForm.password.$invalid && (vm.personalInfoForm.password.$dirty || vm.personalInfoForm.$submitted)}">
+                                        <label for="exampleInputPassword1">Current Password</label>
+                                        <input type="password" class="form-control"
+                                               id="exampleInputPassword1" name="password"
+                                               placeholder="Password"
+                                               ng-model="vm.personalInfo.password" required>
+                                        <span class="help-block error-block basic-block">Required</span>
+                                    </div>
+
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group"
+                                         ng-class="{'has-error': vm.personalInfoForm.password.$invalid && (vm.personalInfoForm.password.$dirty || vm.personalInfoForm.$submitted)}">
+                                        <label for="exampleInputPassword1">New Password</label>
+                                        <input type="password" class="form-control"
+                                               id="exampleInputPassword1" name="password"
+                                               placeholder="Password"
+                                               ng-model="vm.personalInfo.password" required>
+                                        <span class="help-block error-block basic-block">Required</span>
+                                    </div>
+                                    <div class="form-group"
+                                         ng-class="{'has-error': !vm.arePersonalInfoPasswordsEqual() && (vm.personalInfoForm.confirmPassword.$dirty || vm.personalInfoForm.$submitted)}">
+                                        <label for="exampleInputConfirmPassword1">Confirm
+                                            Password</label>
+                                        <input type="password" class="form-control"
+                                               id="exampleInputConfirmPassword1"
+                                               name="confirmPassword" placeholder="Confirm Password"
+                                               ng-model="vm.personalInfo.confirmPassword" required>
+                                        <span class="help-block error-block basic-block">Passwords should match</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group row clearfix">
+                                <div class="col-sm-9"></div>
+                                <div class="col-sm-3">
+                                    <button type="button" class="btn btn-primary btn-with-icon save-profile"
+                                            ng-click="profile.updatePassword()">
+                                        <i class="ion-android-checkmark-circle"></i>Update Password
+                                    </button>
+                                </div>
+                            </div>
+
+                        </form>
+
+
+                    </div>
+                    <div ng-show="$dropdownTabActive == 2">
+
+                        <div>
+                            notification Settings.....................
+                        </div>
+
+
+                    </div>
+
+                </uib-tab>
+            </uib-tabset>
+            </uib-tab>
+            </uib-tabset>
+        </div>
+    </div>
+
+</div>
+
+
+

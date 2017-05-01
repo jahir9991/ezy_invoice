@@ -1,0 +1,95 @@
+<form ng-submit="clients.insertFormSubmit(clients.insertData)">
+    <h3 class="with-line">Add new Client</h3>
+    <div class="row">
+        <div class="col-md-6">
+            <div class="form-group row clearfix">
+                <label for="name" class="col-sm-3 control-label text-center">Name</label>
+                <div class="col-sm-9">
+                    <input type="text" class="form-control" id="name"
+                           placeholder="enter  name" required
+                           ng-model="clients.insertData.name">
+                </div>
+            </div>
+
+
+        </div>
+
+        <div class="col-md-6">
+            <div class="form-group row clearfix">
+                <label for="phone" class="col-sm-3 control-label text-center">Phone</label>
+                <div class="col-sm-9">
+                    <input type="tel" class="form-control"
+                           pattern="\d{6,14}[0-9]"
+                           title=""
+                           id="phone"
+                           placeholder="enter phone" required
+                           ng-model="clients.insertData.phone">
+                </div>
+            </div>
+
+
+        </div>
+        <div class="col-md-6">
+            <div class="form-group row clearfix">
+                <label for="email" class="col-sm-3 control-label text-center">Email</label>
+                <div class="col-sm-9">
+                    <input type="email" class="form-control" id="email"
+                           placeholder="enter email"
+                           ng-model="clients.insertData.email">
+                </div>
+            </div>
+
+
+        </div>
+        <div class="col-md-6">
+            <div class="form-group row clearfix">
+                <label for="address" class="col-sm-3 control-label text-center">Address</label>
+                <div class="col-sm-9">
+                    <textarea class="form-control" id="address"
+                              placeholder="enter address"
+                              ng-model="clients.insertData.address"/>
+                </div>
+            </div>
+
+
+        </div>
+
+        <div class="col-md-6">
+            <div class="form-group row clearfix">
+                <label for="status" class="col-sm-3 control-label text-center">Status</label>
+
+                <div class="col-sm-6">
+
+                    <div class="form-group">
+                        <select class="form-control" title="Select Status" data-style="btn-primary"
+                                data-container="body" ng-model="clients.insertData.status_id"
+                                ng-selectss="clients.statusList"
+                                dis="true"
+                                selectpicker
+
+                                ng-options="item.id as item.name for item in clients.statusList "
+                        >
+
+
+                        </select>
+                    </div>
+
+
+                </div>
+            </div>
+
+
+        </div>
+
+    </div>
+    <div class="form-group row clearfix">
+        <div class="col-sm-9"></div>
+        <div class="col-sm-3">
+            <button type="submit" class="btn btn-primary btn-with-icon save-profile">
+                <i class="ion-android-checkmark-circle"></i>Add Client
+            </button>
+        </div>
+    </div>
+
+
+</form>

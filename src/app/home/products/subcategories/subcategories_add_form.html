@@ -1,0 +1,80 @@
+<form ng-submit="subcategories.insertFormSubmit(subcategories.insertData)">
+    <h3 class="with-line">Add new Subcategory</h3>
+    <div class="row">
+        <div class="col-md-4">
+            <div class="form-group row clearfix">
+                <label for="name" class="col-sm-3 control-label text-center">Name</label>
+                <div class="col-sm-9">
+                    <input type="text" class="form-control" id="name"
+                           placeholder="name" ng-required="true"
+                           ng-model="subcategories.insertData.name">
+                </div>
+            </div>
+
+
+        </div>
+        <div class="col-md-4">
+            <div class="form-group row clearfix">
+                <label for="category" class="col-sm-3 control-label text-center">Category</label>
+
+                <div class="col-sm-6">
+
+                    <div class="form-group">
+                        <select class="form-control" title="Select Category" data-style="btn-info"
+                                data-container="body" ng-model="subcategories.insertData.category_id"
+                                ng-selectss="subcategories.categoryList"
+                                dis="true"
+                                selectpicker
+                                required
+                                ng-options="item.id as item.name for item in subcategories.categoryList "
+                        >
+
+
+                        </select>
+                    </div>
+
+
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="form-group row clearfix">
+                <label for="status" class="col-sm-3 control-label text-center">Status</label>
+
+                <div class="col-sm-6">
+
+                    <div class="form-group">
+                        <select class="form-control" title="Select Status" data-style="btn-primary"
+                                data-container="body" ng-model="subcategories.insertData.status_id"
+                                ng-selectss="subcategories.statusList"
+                                dis="true"
+                                selectpicker
+
+                                ng-options="item.id as item.name for item in subcategories.statusList "
+                        >
+
+
+                        </select>
+                    </div>
+
+
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+
+    <legend></legend>
+    <div class="form-group row clearfix">
+        <div class="col-sm-9"></div>
+        <div class="col-sm-3">
+            <button type="submit" class="btn btn-primary btn-with-icon save-profile">
+                <i class="ion-android-checkmark-circle"></i>Add Subcategory
+            </button>
+        </div>
+    </div>
+
+
+<legend></legend>
+</form>

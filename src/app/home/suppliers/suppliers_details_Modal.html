@@ -1,0 +1,38 @@
+<div class="modal-header">
+    <h4 class="modal-title" id="myModalLabel">Supplier Detail</h4>
+</div>
+<div class="modal-body">
+
+    <table class="table table-striped table-hover">
+        <tbody>
+        <tr class="">
+            <td>Name</td>
+            <td>{{singleSupplier.name}}</td>
+        </tr>
+        <tr class="">
+            <td>Email</td>
+            <td>{{singleSupplier.email || 'n/a'}}</td>
+        </tr>
+        <tr class="">
+            <td>Phone</td>
+            <td>{{singleSupplier.phone || 'n/a'}}</td>
+        </tr>
+        <tr class="">
+            <td>Status</td>
+            <td>
+                <button class="btn  btn-{{singleSupplier.status.name}} ">{{singleSupplier.status.name}}</button>
+            </td>
+        </tr>
+
+
+        </tbody>
+    </table>
+
+
+</div>
+<div class="modal-footer">
+    <a class="btn btn-info" href="/#!/suppliers/single/{{singleSupplier.id}}">More Information</a>
+
+    <button type="button" class="btn btn-primary" ng-click="closeThisDialog()">Close</button>
+</div>
+

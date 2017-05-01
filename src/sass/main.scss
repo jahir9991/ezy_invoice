@@ -1,0 +1,230 @@
+@import 'common';
+
+.semi-medium-panel {
+  min-height: 60vh;
+}
+
+.bg-primary {
+  background: $primary !important
+}
+
+.bg-dark {
+  background: #1C2B36 !important
+}
+
+.popover-wrapper form {
+  top: auto;
+  bottom: 12px;
+  z-index: 9999 !important;
+}
+
+#selectpicker {
+  display: block !important;
+}
+
+.btn-PAID {
+  background: $success;
+  color: white !important;
+
+  a {
+    color: white !important;
+  }
+}
+
+.btn-UNPAID {
+  background: $danger;
+  color: white !important;
+
+  a {
+    color: white !important;
+  }
+}
+
+.btn-PARTIALLY {
+  background: $warning;
+  color: white !important;
+
+  a {
+    color: white !important;
+  }
+}
+
+.btn-Inactive {
+  background: $danger;
+  color: white !important;
+
+  a {
+    color: white !important;
+  }
+}
+
+.btn-Active {
+  background: $success;
+  color: white !important;
+
+  a {
+    color: white !important;
+  }
+}
+
+.jaSelect > .btn-group {
+  z-index: 0 !important;
+
+}
+
+.darkPanel .nav-tabs {
+  background: #1C2B36 !important
+}
+
+.primaryPanel .nav-tabs {
+  background: $primary !important;
+}
+
+.successPanel .nav-tabs {
+  background: $success !important;
+}
+
+.infoPanel .nav-tabs {
+  background: $info !important;
+}
+
+.warningPanel .nav-tabs {
+  background: $warning !important;
+}
+
+.dangerPanel .nav-tabs {
+  background: $danger !important;
+}
+
+thead {
+
+  th {
+    text-align: center;
+    font-size: large;
+    &:hover {
+      text-decoration: underline;
+      color: #1d9650;
+
+    }
+  }
+}
+
+td {
+  align-content: center !important;
+  text-align: center !important;
+}
+
+#loading-bar {
+  .bar {
+    height: 7px;
+    background: $danger;
+  }
+}
+
+#loading-bar-spinner {
+  top: 20px;
+  left: 50vw;
+  .spinner-icon {
+
+    height: 30px;
+    width: 30px;
+    //background: #000;
+    border: solid 7px transparent;
+    border-top-color: #ec4844;
+    border-left-color: #ec4844;
+  }
+}
+
+/*
+ * fixed table layout
+ */
+
+.bigData {
+  max-width: 300px;
+  text-wrap: normal;
+  word-wrap: break-word;
+
+}
+
+#invoiceCreateForm {
+  thead {
+    background: $dark;
+    color: white;
+  }
+
+  td {
+    padding: 10px;
+    max-width: 40px;
+  }
+}
+
+.addPaymentModal {
+  //padding-bottom: 0 !important;
+  //padding-top: 0 !important;
+  .ngdialog-content {
+    background: transparent !important;
+    z-index: 9999 !important;
+    width: 60% !important;
+    min-height: 60% !important;
+
+  }
+}
+
+.invoiceDetailModal {
+  padding: 0 !important;
+  margin: 0 !important;
+
+  .ngdialog-content {
+    padding: 0 !important;
+    margin: 0 !important;
+
+    background: transparent !important;
+    z-index: 9999 !important;
+    min-width: 100% !important;
+    min-height: 100% !important;
+
+  }
+}
+
+#voucherCreateForm {
+  thead {
+    background: $dark;
+    color: white;
+  }
+
+  td {
+    padding: 10px;
+    max-width: 40px;
+  }
+}
+
+.addExpenseModal {
+  //padding-bottom: 0 !important;
+  //padding-top: 0 !important;
+  .ngdialog-content {
+    background: transparent !important;
+    z-index: 9999 !important;
+    width: 60% !important;
+    min-height: 60% !important;
+
+  }
+}
+
+.voucherDetailModal {
+  padding: 0 !important;
+  margin: 0 !important;
+
+  .ngdialog-content {
+    padding: 0 !important;
+    margin: 0 !important;
+
+    background: transparent !important;
+    z-index: 9999 !important;
+    min-width: 100% !important;
+    min-height: 100% !important;
+
+  }
+}
+
+// injector
+// endinjector

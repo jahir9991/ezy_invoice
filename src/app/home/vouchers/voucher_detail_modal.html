@@ -1,0 +1,171 @@
+<div class="panel panel-primary">
+    <!--<div class="panel-heading ">-->
+    <!--<h4 class=" text-center" id="myModalLabel">Add Payment</h4>-->
+
+    <!--</div>-->
+
+    <div class="panel-body" id="voucherDetail">
+        <div class="form-group ">
+            <button class="  btn btn-success" data-dismiss="modal" ng-click="print('voucherBox')">
+                <i class="fa fa-print"></i> Print
+            </button>
+            <button class="btn btn-danger " ng-click="closeThisDialog()">Close</button>
+
+            <!--{{voucher}}-->
+        </div>
+
+        <span id="voucherBox">
+            <style>
+                .voucher-box {
+                    max-width: 595px;
+                    margin: auto;
+                    padding: 30px;
+                    border: 1px solid #eee;
+                    box-shadow: 0 0 10px rgba(0, 0, 0, .15);
+                    font-size: 16px;
+                    line-height: 24px;
+                    font-family: 'Helvetica Neue', 'Helvetica', Helvetica, Arial, sans-serif;
+                    color: #555;
+                    min-height: 842px;
+                    min-width: 595px;
+                }
+
+                .voucher-box table {
+                    width: 100%;
+                    line-height: inherit;
+                    text-align: left;
+                    padding: 2px;
+                }
+
+                .voucher-box table tr.heading td {
+                    background: #35465c;
+                    border-bottom: 1px solid #ddd;
+                    color: whitesmoke;
+                    font-weight: bold;
+                    line-height: 2;
+                }
+
+
+            </style>
+            <div class="voucher-box">
+
+                <table cellpadding="0" cellspacing="0">
+                    <tr class="top" style="border-bottom:3px solid #0A7C71">
+                        <td colspan="2">
+                            <div class="title ">     AbedinsGarage
+                                <!--<img src="/img/logo.png"-->
+                                <!--style="width:100%; max-width:300px;">-->
+                            </div>
+                        </td>
+
+                        <td colspan="2">
+                            <div style="text-align: end;">
+                                Voucher# {{voucher.number}}<br>
+                                Date: {{voucher.date}}<br>
+                                <!--Due: February 1, 2015-->
+                            </div>
+                        </td>
+
+                    </tr>
+                    <tr>
+                        <td colspan="2">
+
+                            <div style="width: 100%; padding-bottom: 10px;">
+                                House # 24, Road # 4, <br>
+                                Rose Valley R/A, <br>
+                                Zakir Hossain Road Khulshi, Chittagong,Bangladesh. <br>
+                                0088-031-2566601, <br>
+                                info@universallpg.com
+
+                            </div>
+                        </td>
+                        <td colspan="2">
+
+                            <div style="width: 100%;text-align: -webkit-right;">
+                                <div> {{voucher.client.name}}<br>
+                                    <!--{{voucher.client.address}}<br>-->
+                                    phone: {{voucher.client.phone || 'n/a' }}<br>
+                                    email: {{voucher.client.email || 'n/a' }}<br></div>
+
+                            </div>
+
+                        </td>
+                    </tr>
+
+
+                    <tr class="heading" style="text-align: center ;padding-top: 15px;">
+                        <td>
+                            Item
+                        </td>
+                        <td>
+                            Qty
+                        </td>
+
+                        <td>
+                            rate
+                        </td>
+                        <td>
+                            Price
+                        </td>
+                    </tr>
+
+                    <tr class="item" style="text-align: center;"
+                        ng-repeat="item in voucher.voucher_products">
+                        <td>
+                            {{item.product_name}}
+                        </td>
+                        <td>
+                            {{item.product_quantity}}
+                        </td>
+
+                        <td>
+                            {{item.product_rate | currency:'tk '}}
+                        </td>
+                        <td>
+                            {{item.product_total_price | currency:'tk '}}
+                        </td>
+                    </tr>
+
+                
+                    <tr style="text-align: center; background: #0DAD9E;color: whitesmoke; ">
+                        <td></td>
+                        <td></td>
+
+                        <td> Sub-Total:</td>
+
+                        <td>
+                            {{voucher.sub_total_price}}
+                        </td>
+                    </tr>
+                    <tr style="text-align: center; background: #0DAD9E;color: whitesmoke; ">
+                        <td></td>
+                        <td></td>
+
+                        <td> Discount:</td>
+
+                        <td>
+                            {{voucher.discount_price}}
+                        </td>
+                    </tr>
+                    <tr style="text-align: center; background: #0DAD9E;color: whitesmoke; ">
+                                        <td></td>
+                                        <td></td>
+
+                                        <td> <legend></legend> Total:</td>
+
+                                        <td>
+                                            <legend></legend>
+                                            {{voucher.total_price | currency: 'tk '}}
+                                        </td>
+                                    </tr>
+                </table>
+
+                <div style="bottom: 10px;">
+                    <h5>note:</h5>
+                </div>
+
+            </div>
+        </span>
+
+    </div>
+</div>

@@ -1,0 +1,344 @@
+<div class="row">
+
+    <div class="col-md-9">
+        <div class="form-group">
+
+            <label class="checkbox-inline custom-checkbox nowrap">
+                <input type="checkbox" ng-model="jobcard.checkInput"
+                       ng-change="jobcard.checkChange()">
+                <span>With Number</span>
+
+            </label>
+            <button class="btn btn-Active" ng-click="jobcard.refresh()"><i class="fa fa-refresh"></i> Refresh Number
+            </button>
+
+
+        </div>
+
+
+    </div>
+    <div class="col-md-3">
+        <button class="  btn btn-success" data-dismiss="modal" ng-click="jobcard.print('jobcardbox')">
+            <i class="fa fa-print"></i> Print
+        </button>
+
+    </div>
+
+
+</div>
+<style>
+    .main-table {
+        display: none;
+    }
+</style>
+
+<span id="jobcardbox">
+          <style>
+              * {
+                  margin: 0;
+                  padding: 0;
+              }
+
+              .main_div {
+                  width: 695px;
+                  height: 975px;
+                  margin: auto;
+                  background-color: #FFF;
+                  padding-top: 0px;
+                  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+              }
+
+              img {
+                  padding-left: 250px;
+                  padding-top: 0px;
+              }
+
+              .table {
+                  width: 95%;
+                  margin: auto;
+              }
+
+              .table, .td, .th {
+                  border: 1px solid black;
+                  border-collapse: collapse;
+              }
+
+              caption {
+                  padding-top: 5px;
+                  padding-bottom: 15px;
+              }
+
+              .madeby {
+                  padding-right: 5px;
+                  float: right;
+              }
+
+              .date {
+                  padding-left: 5px;
+              }
+
+              .bar {
+                  border-left: 1px solid #A8A8A8;
+              }
+
+              .left {
+                  width: 45%;
+                  float: left;
+                  border-right: 1px solid #A8A8A8;
+              }
+
+              .right {
+                  /*padding-left: 30px;*/
+              }
+
+              .signature {
+                  float: right;
+                  padding-right: 15px;
+                  /*border-top: 1px solid black;*/
+              }
+
+              hr {
+                  float: right;
+                  width: 15%;
+              }
+             
+
+          </style>
+          <div class="jobcard-box">
+
+              <div class="main_div">
+             			<!-- <div class="logo"></div> -->
+             			<img src="/assets/img/abedins_logo.png" alt="" width="200px">
+
+             		<table class="table">
+             			<caption><u><b>JOB CARD</b></u></caption>
+
+             			<tr>
+                 			<td class="td">Customer Name:</td>
+                 			<td class="td" colspan="2"><span class="tdt">Job No: <span ng-if="jobcard.checkInput">{{jobcard.number}} </span></span>
+
+                                
+                            </td>
+               			</tr>
+             		    <tr>
+             			    <td class="td">Address: </td>
+             			    <td class="td">In Date:</td>
+             			    <td class="td">Out Date:</td>
+             		  </tr>
+             		  <tr>
+             			    <td class="td">Contact #</td>
+             			    <td class="td">In Time:</td>
+             			    <td class="td">Out Time:</td>
+             		  </tr>
+             		  <tr>
+             			    <td class="td">Registration No:</td>
+             			    <td class="td" colspan="2">Brand</td>
+             		  </tr>
+             		  <tr>
+             			    <td class="td">Chassis:</td>
+             			    <td class="td">Engine:</td>
+             			    <td class="td">Milage:</td>
+             		  </tr>
+             		  <tr>
+             			    <td class="td">Engineer:</td>
+             			    <td class="td" colspan="2">Techenician:</td>
+             		  </tr>
+             		</table>
+             		<br>
+             		<table class="table main-table">
+
+             			<tr>
+             				<th class="th" style="width: 9%;">SL No</th>
+             				<th class="th">Particulars</th>
+             				<th class="th" style="width: 9%;">Quantity</th>
+             				<th class="th" style="width: 15%;">Rate</th>
+             				<th class="th" style="width: 18%;">Amount</th>
+             				<th class="th">Remarks</th>
+             			</tr>
+             			<tr>
+             				<td class="td">&nbsp;</td>
+             				<td class="td">&nbsp;</td>
+             				<td class="td">&nbsp;</td>
+             				<td class="td">&nbsp;</td>
+             				<td class="td">&nbsp;</td>
+             				<td class="td">&nbsp;</td>
+             			</tr>
+
+             			<tr>
+             				<td class="td">&nbsp;</td>
+             				<td class="td">&nbsp;</td>
+             				<td class="td">&nbsp;</td>
+             				<td class="td">&nbsp;</td>
+             				<td class="td">&nbsp;</td>
+             				<td class="td">&nbsp;</td>
+             			</tr>
+
+             			<tr>
+             				<td class="td">&nbsp;</td>
+             				<td class="td">&nbsp;</td>
+             				<td class="td">&nbsp;</td>
+             				<td class="td">&nbsp;</td>
+             				<td class="td">&nbsp;</td>
+             				<td class="td">&nbsp;</td>
+             			</tr>
+
+             			<tr>
+             				<td class="td">&nbsp;</td>
+             				<td class="td">&nbsp;</td>
+             				<td class="td">&nbsp;</td>
+             				<td class="td">&nbsp;</td>
+             				<td class="td">&nbsp;</td>
+             				<td class="td">&nbsp;</td>
+             			</tr>
+
+             			<tr>
+             				<td class="td">&nbsp;</td>
+             				<td class="td">&nbsp;</td>
+             				<td class="td">&nbsp;</td>
+             				<td class="td">&nbsp;</td>
+             				<td class="td">&nbsp;</td>
+             				<td class="td">&nbsp;</td>
+             			</tr>
+
+             			<tr>
+             				<td class="td">&nbsp;</td>
+             				<td class="td">&nbsp;</td>
+             				<td class="td">&nbsp;</td>
+             				<td class="td">&nbsp;</td>
+             				<td class="td">&nbsp;</td>
+             				<td class="td">&nbsp;</td>
+             			</tr>
+
+             			<tr>
+             				<td class="td">&nbsp;</td>
+             				<td class="td">&nbsp;</td>
+             				<td class="td">&nbsp;</td>
+             				<td class="td">&nbsp;</td>
+             				<td class="td">&nbsp;</td>
+             				<td class="td">&nbsp;</td>
+             			</tr>
+
+             			<tr>
+             				<td class="td">&nbsp;</td>
+             				<td class="td">&nbsp;</td>
+             				<td class="td">&nbsp;</td>
+             				<td class="td">&nbsp;</td>
+             				<td class="td">&nbsp;</td>
+             				<td class="td">&nbsp;</td>
+             			</tr>
+
+             			<tr>
+             				<td class="td">&nbsp;</td>
+             				<td class="td">&nbsp;</td>
+             				<td class="td">&nbsp;</td>
+             				<td class="td">&nbsp;</td>
+             				<td class="td">&nbsp;</td>
+             				<td class="td">&nbsp;</td>
+             			</tr>
+
+             			<tr>
+             				<td class="td">&nbsp;</td>
+             				<td class="td">&nbsp;</td>
+             				<td class="td">&nbsp;</td>
+             				<td class="td">&nbsp;</td>
+             				<td class="td">&nbsp;</td>
+             				<td class="td">&nbsp;</td>
+             			</tr>
+
+             			<tr>
+             				<td class="td">&nbsp;</td>
+             				<td class="td">&nbsp;</td>
+             				<td class="td">&nbsp;</td>
+             				<td class="td">&nbsp;</td>
+             				<td class="td">&nbsp;</td>
+             				<td class="td">&nbsp;</td>
+             			</tr>
+
+             			<tr>
+             				<td class="td">&nbsp;</td>
+             				<td class="td">&nbsp;</td>
+             				<td class="td">&nbsp;</td>
+             				<td class="td">&nbsp;</td>
+             				<td class="td">&nbsp;</td>
+             				<td class="td">&nbsp;</td>
+             			</tr>
+
+             			<tr>
+             				<td class="td">&nbsp;</td>
+             				<td class="td">&nbsp;</td>
+             				<td class="td">&nbsp;</td>
+             				<td class="td">&nbsp;</td>
+             				<td class="td">&nbsp;</td>
+             				<td class="td">&nbsp;</td>
+             			</tr>
+
+             			<tr>
+             				<td class="td">&nbsp;</td>
+             				<td class="td">&nbsp;</td>
+             				<td class="td">&nbsp;</td>
+             				<td class="td">&nbsp;</td>
+             				<td class="td">&nbsp;</td>
+             				<td class="td">&nbsp;</td>
+             			</tr>
+
+             			<tr>
+             				<td class="td">&nbsp;</td>
+             				<td class="td">&nbsp;</td>
+             				<td class="td">&nbsp;</td>
+             				<td class="td">&nbsp;</td>
+             				<td class="td">&nbsp;</td>
+             				<td class="td">&nbsp;</td>
+             			</tr>
+
+             			<tr>
+             				<td class="td">&nbsp;</td>
+             				<td class="td">&nbsp;</td>
+             				<td class="td">&nbsp;</td>
+             				<td class="td">&nbsp;</td>
+             				<td class="td">&nbsp;</td>
+             				<td class="td">&nbsp;</td>
+             			</tr>
+
+             			<tr>
+             				<td class="td">&nbsp;</td>
+             				<td class="td">&nbsp;</td>
+             				<td class="td">&nbsp;</td>
+             				<td class="td">&nbsp;</td>
+             				<td class="td">&nbsp;</td>
+             				<td class="td">&nbsp;</td>
+             			</tr>
+
+             			<tr>
+             				<td class="td">&nbsp;</td>
+             				<td class="td">&nbsp;</td>
+             				<td class="td">&nbsp;</td>
+             				<td class="td">&nbsp;</td>
+             				<td class="td">&nbsp;</td>
+             				<td class="td">&nbsp;</td>
+             			</tr>
+
+             	
+
+             		</table>
+             		<br><br><br>
+             		<hr><br>
+             		<div class="signature">signature</div>
+             		<br><br>
+             		<footer>
+             		<div class="left">&nbsp;&nbsp;<b>Workshop:</b><br>&nbsp;&nbsp;<b>Office:</b>Adjacent to the Cox's Bazar <br>&nbsp;&nbsp;police lines
+                     		(western side),Kolatoli,<br>&nbsp;&nbsp;Cox's Bazar</div>
+             		<div class="right">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+						&nbsp;<b>Contact:</b>01879 222 111, 0179 82 777 87<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>E-mail:</b>hello@abedinsgarage.com<br>&nbsp;
+						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>Web:</b>abedinsgarage.com</div>
+             	
+             		<br><br>
+             		<span class="date">Date:</span>{{jobcard.today | date:'dd-MM-yyyy'}}<span class="madeby">Powered by Ennvisio Digital pvt. ltd</span>
+
+
+                    </footer>
+
+
+          </div>
+          </div>
+      </span>

@@ -1,0 +1,80 @@
+<div class="semi-medium-panel  ">
+
+    <form ng-submit="services.insertFormSubmit(services.insertData)">
+        <h3 class="with-line">Add new Service</h3>
+        <div class="row">
+            <div class="col-md-4">
+                <div class="form-group row clearfix">
+                    <label for="name" class="col-sm-3 control-label text-center">Name</label>
+                    <div class="col-sm-9">
+                        <input type="text" class="form-control" id="name"
+                               placeholder="insert service name" ng-required="true"
+                               ng-model="services.insertData.name">
+                    </div>
+                </div>
+
+            </div>
+            <div class="col-md-4">
+                <div class="form-group row clearfix">
+                    <label for="selling_price" class="col-sm-3 control-label text-center">Selling Price</label>
+                    <div class="col-sm-9">
+                        <input type="number" min="0" step="0.01" class="form-control" id="selling_price"
+                               placeholder="insert selling price" ng-required="true"
+                               ng-model="services.insertData.selling_price">
+                    </div>
+                </div>
+
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-4">
+                <div class="form-group row clearfix">
+                    <label for="type" class="col-sm-3 control-label text-center">Type</label>
+                    <div class="col-sm-9">
+                        <input type="text"  class="form-control" id="type"
+                               placeholder="insert service type" 
+                               ng-model="services.insertData.type">
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="col-md-4">
+                <div class="form-group row clearfix">
+                    <label for="status" class="col-sm-3 control-label text-center">Status</label>
+
+                    <div class="col-sm-6">
+
+                        <div class="form-group">
+                            <select class="form-control" title="Select Status" data-style="btn-primary"
+                                    data-container="body" ng-model="services.insertData.status_id"
+                                    ng-selectss="services.statusList"
+                                    dis="true"
+                                    selectpicker
+
+                                    ng-options="item.id as item.name for item in services.statusList "
+                            >
+
+
+                            </select>
+                        </div>
+
+
+                    </div>
+                </div>
+            </div>
+
+        </div>
+        <legend></legend>
+        <div class="form-group row clearfix">
+            <div class="col-sm-9"></div>
+            <div class="col-sm-3">
+                <button type="submit" class="btn btn-primary btn-with-icon save-profile">
+                    <i class="ion-android-checkmark-circle"></i>Add Service
+                </button>
+            </div>
+        </div>
+
+
+    </form>
+</div>

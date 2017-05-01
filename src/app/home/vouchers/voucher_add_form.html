@@ -1,0 +1,197 @@
+<div class="semi-medium-panel  horizontal-scroll">
+    <form class="container-fluid" name="voucherCreateForm" ng-model="vouchers.createForm" id="voucherCreateForm"
+          ng-submit="vouchers.insertFormSubmit(voucherCreateForm.$valid)" autocomplete="off">
+
+        <legend class="text-center">Insert New Voucher</legend>
+        <br/>
+        <div class="row">
+            <div class="col-md-6 col-lg-6 ">
+                <div class="form-group " ng-class="{ 'has-error': !vouchers.insertForm.supplier_id }">
+                    <div class="col-md-2 col-lg-2 ">
+                        <lebel class="control-label">Supplier:</lebel>
+                    </div>
+                    <div class="col-md-10 col-lg-10">
+                        <div class="select-box">
+
+                            <ui-select name="supplier" ng-model="vouchers.insertForm.supplier_id"
+                                       ng-disabled="vouchers.disabled"
+                                       reset-search-input="false"
+                                       title="select supplier"
+                                       append-to-body="true"
+                                       required>
+
+                                <ui-select-match placeholder="select supplier...">{{$select.selected.name}}
+                                </ui-select-match>
+                                <ui-select-choices
+                                        repeat="supplier.id as supplier in vouchers.supplierList track by $index"
+                                        refresh="vouchers.getSuppliersBySearch($select.search,10)"
+                                        refresh-delay="0">
+                                    <div ng-bind-html="supplier.name | highlight: $select.search"></div>
+                                    <small>id: {{supplier.id}}</small>
+                                    <span></span>
+                                    <small>phone: {{supplier.phone}}</small>
+
+                            </ui-select>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+            <div class="col-md-6 col-lg-6 ">
+                <div class="form-group">
+                    <label class="col-md-2 control-label">Date:</label>
+                    <div class="col-md-10">
+                        <div moment-picker="vouchers.insertForm.date" format="YYYY-MM-DD">
+                            <input class="form-control"
+                                   ng-model="vouchers.insertForm.date"
+                                   name="date"
+                                   placeholder="Select date"
+
+                                   required
+                                   ng-model-options="{ updateOn: 'blur' }">
+                        </div>
+
+
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+        <legend class="text-center"></legend>
+        <br>
+        <br>
+        <br>
+
+        <table class="panel table table-hover  table-responsive" ng-if="vouchers.insertForm.items.length">
+            <thead>
+            <tr>
+                <th class="text-center">Name</th>
+                <th class="text-center">Price</th>
+                <th class="text-center">Qty</th>
+                <th class="text-center">Total</th>
+                <th class="text-center">Delete</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr ng-repeat="item in vouchers.insertForm.items">
+
+                <td class="text-center">
+                    <div ng-class="{ 'has-error': !item.name }">
+                        <div class="form-group">
+
+
+                            <div class="select-box">
+
+                                <ui-select name="product" ng-model="item.product_id"
+                                           theme="bootstrap"
+                                           ng-disabled="vouchers.disabled"
+                                           reset-search-input="false"
+                                           title="Choose a product"
+                                           append-to-body="true"
+                                           ng-required="true"
+                                           ui-select-required="true"
+                                           on-select="item.product_name=$select.selected.name"
+                                           required>
+                                    <ui-select-match placeholder="Choose a product...">{{$select.selected.name}}
+                                    </ui-select-match>
+                                    <ui-select-choices
+                                            repeat="product.id as product in vouchers.productList track by $index"
+                                            refresh="vouchers.getProductsBySearch_buy($select.search,10)"
+                                            refresh-delay="0">
+                                        <div ng-bind-html="product.name | highlight: $select.search"></div>
+                                        <small ng-bind-html="product.quantity"></small>
+
+
+                                    </ui-select-choices>
+                                    <ui-select-no-choice>
+                                        <div class="text-center">
+                                            no product Found
+                                        </div>
+                                    </ui-select-no-choice>
+
+
+                                </ui-select>
+                            </div>
+                        </div>
+                    </div>
+                </td>
+                <td>
+                    <!--<input type="hidden" min="0" ng-model="item.product_total_price" class="form-control"/>-->
+                   
+                    <div class="form-group">
+
+                        <input type="number" min="1" step="00.01" ng-model="item.product_rate" required
+                               class="form-control input input-sm">
+                    </div>
+                </td>
+                <td>
+                    <div class="form-group">
+
+                        <input type="number" min="1" ng-model="item.product_quantity"
+                               class="form-control input input-sm">
+                    </div>
+                </td>
+
+                <td><p class="text-center" ng-model="item.product_total_price">{{item.product_quantity *
+                    item.product_rate}}</p></td>
+                <td>
+                    <button type="button" class="btn btn-danger"
+                            ng-click="vouchers.itemRemove($index)"><i class="fa fa-trash-o"></i>
+                    </button>
+                </td>
+            </tr>
+
+            </tbody>
+        </table>
+
+
+        <legend></legend>
+        <div class="row">
+            <div class="col-md-1"></div>
+            <div class="col-md-6">
+                <button type="button" class="btn btn-info" ng-click="vouchers.itemAdd()">
+                    <i class="fa fa-plus"></i>Add item
+                </button>
+
+            </div>
+            <div class="col-md-4" ng-if="vouchers.insertForm.items.length">
+                <div class="row">
+                    <div class="col-md-4">
+                        <h5>Sub Total:</h5>
+                    </div>
+                    <div class="col-md-8">
+                        <p>{{vouchers.itemSubTotalPrice() | currency : 'tk '}}</p>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-3">
+                        <h5>Discount:</h5>
+                    </div>
+                    <div class="col-md-9">
+                        <input class="form-control " type="number" min="0" step="00.01"
+                               ng-model="vouchers.insertForm.discount_price">
+                    </div>
+                </div>
+                <legend></legend>
+                <div class="row">
+                    <div class="col-md-4">
+                        <h5>Total:</h5>
+                    </div>
+                    <div class="col-md-8">
+                        <p>{{vouchers.itemTotalPrice() | currency : 'tk '}}</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="col-md-2 pull-right">
+            <button type="submit" class="btn btn-fab btn-success">
+                Save Voucher
+            </button>
+        </div>
+
+    </form>
+
+</div>

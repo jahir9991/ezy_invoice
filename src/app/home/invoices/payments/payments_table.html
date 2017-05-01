@@ -1,0 +1,174 @@
+<div class="semi-medium-panel  horizontal-scroll">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-4 col-lg-4">
+                <div class="form-group select-page-size-wrap ">
+                    <label>Rows on page
+                        <select id="selectpicker" class=" form-control selectpicker show-tick " data-style="btn-primary"
+                                title="Rows on page" selectpicker
+                                dis="true"
+                                ng-model="payments.smartTablePageSize" ng-options="i for i in payments.pages">
+                        </select>
+                    </label>
+                    <button class="btn btn-warning" ng-click="payments.refreshPaymentList()"><i
+                            class="fa fa-refresh"></i></button>
+
+                </div>
+
+            </div>
+
+            <div class="col-md-4  col-lg-4">
+                <br>
+                <button class="btn bg-facebook ">Search Payments: {{payments.totalPayments}}</button>
+
+            </div>
+            <div class="col-md-4 col-lg-4">
+                <br>
+                <button class="btn btn-info pull-right">Total Payments: {{::payments.totalPayments}}</button>
+
+            </div>
+        </div>
+    </div>
+    <legend></legend>
+    <table class="table table-hover  table-responsive" st-pipe="payments.callServer" st-table="payments.displayed">
+        <thead>
+        <tr class="sortable">
+            <th st-sort="id">ID</th>
+            <th st-sort="invoice_number">Invoice #</th>
+
+            <th st-sort="date">Date</th>
+            <th st-sort="client_id">Client</th>
+
+            <th st-sort="paid_price">Paid Amount</th>
+
+        </tr>
+        <tr>
+
+            <th>
+                <div class="form-group form-group-sm ">
+                    <input ng-model="payments.paymentSearch.id"
+                           class="input input-sm form-control form-control-rounded search-input"
+                           st-search="id"/>
+                </div>
+            </th>
+            <th>
+                <div class="form-group form-group-sm ">
+                    <input ng-model="payments.paymentSearch.invoice_number"
+                           class="input input-sm form-control form-control-rounded search-input"
+                           st-search="invoice_number"/>
+                </div>
+            </th>
+
+            <th colspan="2">
+                <div class="form-group  ">
+                    <div class="input-group">
+
+                    <span class="input-group-addon">
+                    <i class="fa fa-calendar"></i>
+                    </span>
+                        <input class="form-control"
+                               format="YYYY-MM-DD"
+                               moment-picker="payments.paymentSearch.dd"
+                               ng-model="payments.paymentSearch.dd"
+                               name="date"
+                               placeholder="Select date"
+                               change="payments.dateSearchChanged(newValue)"
+
+                               ng-model-options="{ updateOn: 'blur' }">
+                        <span class="input-group-addon btn btn-danger"
+                              ng-click="payments.removeDateSearch()">
+                                          <i class="fa fa-close"
+                                          ></i>
+                        </span>
+                    </div>
+
+                </div>
+            </th>
+
+
+            <th style="max-width: 20px;">
+                <div class="form-group form-group-sm ">
+                    <input ng-model="payments.paymentSearch.paid_price"
+                           class="input input-sm form-control form-control-rounded search-input"
+                           st-search="paid_price"/>
+                </div>
+            </th>
+
+
+        </tr>
+        </thead>
+
+        <tbody ng-show="!payments.isLoading">
+        <tr ng-repeat="(key, row) in payments.displayed" class="editable-tr-wrap ">
+
+            <td>
+                <div>
+                    <span>{{row.id || 'n/a'}}</span>
+                </div>
+            </td>
+            <td>
+                <div>
+                    <span>{{row.invoice_number || 'n/a'}}</span>
+                </div>
+            </td>
+
+            <td>
+                <div>
+                    <span>{{row.date || 'n/a'}}</span>
+                </div>
+            </td>
+            <td>
+                <div>
+                    <a href="/#!/clients/single/{{row.client.id}}">{{row.client.name|| 'n/a'}}</a>
+                </div>
+            </td>
+
+            <td>
+
+                <div class="popover-wrapper">
+                    <a href="" editable-number="row.paid_price" e-required edit-disabled="true"
+                       onbeforesave="payments.update('paid_price',row.id,$data)">
+                        {{row.paid_price | currency:'tk ' || 'n/a'}}
+                    </a>
+                </div>
+
+            </td>
+
+            <!--<td>-->
+                <!--<button class="btn btn-info  btn-xs" ng-click="payments.viewDetails(row)">-->
+                    <!--<i class="fa fa-eye"></i> View-->
+                <!--</button>-->
+
+            <!--</td>-->
+
+
+            <!--<td>-->
+            <!--<button class="btn btn-danger  btn-xs" disabled ng-click="payments.removeInvoice(row.id,$index)"><i-->
+            <!--class="fa fa-trash"></i> Delete-->
+            <!--</button>-->
+
+            <!--</td>-->
+
+
+        </tr>
+        </tbody>
+        <tbody ng-show="payments.isLoading">
+        <tr>
+            <td colspan="100%" class="text-center">Loading ...</td>
+        </tr>
+        </tbody>
+        <tbody ng-show="payments.noData">
+        <tr>
+            <td colspan="100%" class="text-center">no data found</td>
+        </tr>
+        </tbody>
+        <tfoot>
+        <tr>
+            <td class="text-center" st-pagination="" st-items-by-page="payments.smartTablePageSize" colspan="100%">
+            </td>
+        </tr>
+        </tfoot>
+    </table>
+
+
+</div>

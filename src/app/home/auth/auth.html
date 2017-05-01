@@ -1,0 +1,138 @@
+<div class="row">
+    <div class="col-md-2"></div>
+    <div class="col-md-6 ">
+        <div class="panel panel-default well">
+            <div class="panel-heading">Login</div>
+            <div class="panel-body">
+                <form class="form-horizontal" role="form" name="Form" ng-model="loginForm">
+                    <div class="form-group  ">
+                        <label for="email" class="col-md-4 control-label">E-Mail Address</label>
+
+                        <div class="col-md-6">
+                            <input id="email" type="text" class="inline form-control" name="email"
+                                   ng-model="auth.loginForm.email" validator="required,email"
+                                   email-error-message="Provide a valid Email"
+                                   required-error-message="* Email is required" autofocus>
+                            <hr class="invisible">
+
+                        </div>
+                        <!--<div class="col-md-2">-->
+                        <!--<h1 class="red inline">*</h1>-->
+                        <!--</div>-->
+                    </div>
+
+                    <div class="form-group ">
+                        <label for="password" class="col-md-4 control-label">Password</label>
+
+                        <div class="col-md-6">
+                            <input id="password" type="password" class="form-control" name="password"
+                                   ng-model="auth.loginForm.password" validator="required"
+                                   required-error-message="Password is required">
+                            <hr class="invisible">
+                            <hr class="invisible">
+                        </div>
+                    </div>
+
+                    <!--<div class="form-group">-->
+                    <!--<div class="col-md-6 col-md-offset-4">-->
+                    <!--<div class="checkbox">-->
+                    <!--<label>-->
+                    <!--<input type="checkbox" name="remember"> Remember Me-->
+                    <!--</label>-->
+                    <!--</div>-->
+                    <!--</div>-->
+                    <!--</div>-->
+
+                    <div class="form-group">
+                        <div class="col-md-8 col-md-offset-4">
+                            <button type="submit" class="btn btn-primary" ng-click="auth.login(auth.loginForm)"
+                                    validation-submit="Form">
+                                Login
+                            </button>
+
+                            <a class="btn btn-link">
+                                Forgot Your Password?
+                            </a>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-3"></div>
+
+    <!--<div class="col-md-6 ">-->
+    <!--<div class="panel panel-default well">-->
+    <!--<div class="panel-heading">Sign Up</div>-->
+    <!--<div class="panel-body">-->
+    <!--<form class="form-horizontal" role="form" name="Form" ng-model="signupForm">-->
+    <!--<div class="form-group  ">-->
+    <!--<label for="sName" class="col-md-4 control-label">Name</label>-->
+
+    <!--<div class="col-md-6">-->
+    <!--<input id="sName" type="text" class=" form-control" name="sName"-->
+    <!--ng-model="auth.signupForm.name" validator="required"-->
+    <!--required-error-message="* Name is required" autofocus>-->
+    <!--<hr class="invisible">-->
+
+    <!--</div>-->
+
+    <!--</div>-->
+    <!--<div class="form-group  ">-->
+    <!--<label for="sEmail" class="col-md-4 control-label">Phone</label>-->
+
+    <!--<div class="col-md-6">-->
+    <!--<input id="sPhone" type="phone" class=" form-control" name="phone"-->
+    <!--ng-model="auth.signupForm.phone" validator="required,number"-->
+    <!--number-error-message="Provide a valid Phone NUmber"-->
+    <!--required-error-message="* Phone Number is required" autofocus>-->
+    <!--<hr class="invisible">-->
+
+    <!--</div>-->
+
+    <!--</div>-->
+    <!--<div class="form-group  ">-->
+    <!--<label for="sEmail" class="col-md-4 control-label">E-Mail Address</label>-->
+
+    <!--<div class="col-md-6">-->
+    <!--<input id="sEmail" type="text" class="inline form-control" name="email"-->
+    <!--ng-model="auth.signupForm.email" validator="required,email"-->
+    <!--email-error-message="Provide a valid Email"-->
+    <!--required-error-message="* Email is required" autofocus>-->
+    <!--<hr class="invisible">-->
+
+    <!--</div>-->
+
+    <!--</div>-->
+
+    <!--<div class="form-group ">-->
+    <!--<label for="sPassword" class="col-md-4 control-label">Password</label>-->
+
+    <!--<div class="col-md-6">-->
+    <!--<input id="sPassword" type="password" class="form-control" name="password"-->
+    <!--ng-model="auth.signupForm.password" validator="required"-->
+    <!--required-error-message="* Password is required">-->
+    <!--<hr class="invisible">-->
+    <!--<hr class="invisible">-->
+    <!--</div>-->
+    <!--</div>-->
+
+
+    <!--<div class="form-group">-->
+    <!--<div class="col-md-8 col-md-offset-4">-->
+    <!--<button type="submit" class="btn btn-primary" ng-click="auth.signup(auth.signupForm)"-->
+    <!--validation-submit="Form">-->
+    <!--Sign Up-->
+    <!--</button>-->
+
+
+    <!--</div>-->
+    <!--</div>-->
+    <!--</form>-->
+    <!--</div>-->
+    <!--</div>-->
+    <!--</div>-->
+</div>
+
+
+

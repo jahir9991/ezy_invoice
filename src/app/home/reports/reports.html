@@ -1,0 +1,86 @@
+<div ba-panel
+     ba-panel-class="with-scroll horizontal-tabs tabs-panel ">
+    <uib-tabset active="$tabSetStatus.activeTab">
+        <uib-tab heading="Invoice List">
+
+            product list
+
+        </uib-tab>
+        <uib-tab heading="Add New ">
+            <form>
+                <h3 class="with-line">Update Information</h3>
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group row clearfix">
+                            <label for="inputFirstName" class="col-sm-3 control-label text-center">First
+                                Name</label>
+
+                            <div class="col-sm-9">
+                                <input type="text" class="form-control"
+                                       placeholder="First Name"
+                                       value="{{ profile.userInfo.first_name }}">
+                            </div>
+                        </div>
+                        <div class="form-group row clearfix">
+                            <label for="inputLastName" class="col-sm-3 control-label text-center">Last
+                                Name</label>
+
+                            <div class="col-sm-9">
+                                <input type="text" class="form-control" id="inputLastName" placeholder=""
+                                       value="{{profile.userInfo.last_name }}">
+                            </div>
+                        </div>
+                        <div class="form-group row clearfix">
+                            <label class="col-sm-3 control-label text-center">Designation</label>
+
+                            <div class="col-sm-9">
+                                <input type="text" class="form-control" id="" placeholder="Enter Designation"
+                                       value="{{profile.userInfo.designation}}">
+                            </div>
+                        </div>
+
+
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group row clearfix">
+                            <label for="inputEmail" class="col-sm-3 control-label text-center">Email</label>
+                            <div class="col-sm-9">
+                                <input type="text" class="form-control" id="inputEmail"
+                                       placeholder="Enter Email"
+                                       value="{{profile.userInfo.email }}">
+                            </div>
+
+
+                        </div>
+
+                        <div class="form-group row clearfix">
+                            <label class="col-sm-3 control-label text-center">Phone</label>
+
+                            <div class="col-sm-9">
+                                <input type="text" class="form-control" id="phone" placeholder="Enter phone"
+                                       value="{{ profile.userInfo.phone}}">
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+                <div class="form-group row clearfix">
+                    <div class="col-sm-9"></div>
+                    <div class="col-sm-3">
+                        <button type="button" class="btn btn-primary btn-with-icon save-profile"
+                                ng-click="profile.updateProfile()">
+                            <i class="ion-android-checkmark-circle"></i>Update Profile
+                        </button>
+                    </div>
+                </div>
+
+
+            </form>
+        </uib-tab>
+
+    </uib-tabset>
+    </uib-tab>
+    </uib-tabset>
+</div>
+
+

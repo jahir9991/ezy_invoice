@@ -1,0 +1,70 @@
+<div class="panel panel-primary">
+    <div class="panel-heading ">
+        <h4 class=" text-center" id="myModalLabel">Add Expense</h4>
+    </div>
+
+    <div class="panel-body">
+        <form ng-submit="addExpenseFormSubmit(addExpenseForm)">
+            <row>
+                <div class="col-md-6">
+                    <h4>Voucher Number: {{voucher.number}}</h4>
+                    <h4>Total Amount: {{voucher.total_price}}</h4>
+                    <h4>Paid Amount: {{voucher.paid_price}}</h4>
+                    <h4>Due Amount: {{voucher.due_price}}</h4>
+
+                </div>
+                <div class="col-md-6">
+                    <h4>Supplier Name: {{voucher.supplier.name}}</h4>
+                    <h4>Phone : {{voucher.supplier.phone}}</h4>
+                    <h4>Email : {{voucher.supplier.email || 'n/a'}}</h4>
+
+
+                </div>
+            </row>
+            <legend></legend>
+
+            <div class="row">
+                <div class="col-md-6 col-lg-6 ">
+                    <div class="form-group">
+                        <label class="col-md-2 control-label">Date:</label>
+                        <div class="col-md-10">
+                            <div moment-picker="addExpenseForm.date" format="YYYY-MM-DD">
+                                <input class="form-control"
+                                       ng-model="addExpenseForm.date"
+                                       name="date"
+                                       placeholder="Select date"
+                                       required
+                                       ng-model-options="{ updateOn: 'blur' }">
+                            </div>
+
+
+                        </div>
+
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-6 ">
+                    <div class="form-group " ng-class="{ 'has-error': !addExpenseForm.paid_price }">
+                        <div class="col-md-2 col-lg-2 ">
+                            <lebel class="control-label">Amount:</lebel>
+                        </div>
+                        <div class="col-md-10 col-lg-10">
+                            <input type="number" step="0.01" min="0" max="{{voucher.due_price}}" class="form-control"
+                                   ng-model="addExpenseForm.paid_price"
+                                   required>
+                        </div>
+
+                    </div>
+                </div>
+
+            </div>
+            <br>
+            <button type="submit" class="btn btn-primary pull-right">Add Expense</button>
+        </form>
+    </div>
+    <div class="panel-footer text-center">
+        <button class="btn btn-danger " ng-click="closeThisDialog()">Close</button>
+        <br>
+    </div>
+    <br>
+
+</div>

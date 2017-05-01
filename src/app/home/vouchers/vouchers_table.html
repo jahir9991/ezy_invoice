@@ -1,0 +1,257 @@
+<div class="semi-medium-panel  horizontal-scroll">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-4 col-lg-4">
+                <div class="form-group select-page-size-wrap ">
+                    <label>Rows on page
+                        <select id="selectpicker" class=" form-control selectpicker show-tick " data-style="btn-primary"
+                                title="Rows on page" selectpicker
+                                dis="true"
+                                ng-model="vouchers.smartTablePageSize" ng-options="i for i in vouchers.pages">
+                        </select>
+                    </label>
+                    <button class="btn btn-warning" ng-click="vouchers.refreshVoucherList()"><i
+                            class="fa fa-refresh"></i></button>
+
+                </div>
+
+            </div>
+
+            <div class="col-md-4  col-lg-4">
+                <br>
+                <button class="btn bg-facebook ">Search Vouchers: {{vouchers.totalVouchers}}</button>
+
+            </div>
+            <div class="col-md-4 col-lg-4">
+                <br>
+                <button class="btn btn-info pull-right">Total Vouchers: {{::vouchers.totalVouchers}}</button>
+
+            </div>
+        </div>
+    </div>
+    <legend></legend>
+    <table class="table table-hover  table-responsive" st-pipe="vouchers.callServer" st-table="vouchers.displayed">
+        <thead>
+        <tr class="sortable">
+            <!--<th st-sort="id">id</th>-->
+            <th st-sort="voucher_number">#</th>
+
+            <th st-sort="date">Date</th>
+            <th st-sort="client_id">Client</th>
+            <th st-sort="total_price">Total Price</th>
+            <th st-sort="paid_price">Paid Price</th>
+            <th st-sort="due_price">Due Price</th>
+
+            <th st-sort="payment_status_id">Payment</th>
+            <th>View</th>
+            <th>Add Expense</th>
+            <th>Delete</th>
+        </tr>
+        <tr>
+            <!--<th>-->
+            <!--<div class="form-group form-group-sm ">-->
+            <!--<input ng-model="vouchers.voucherSearch.id" class="input-sm form-control search-input"-->
+            <!--st-search="id"/>-->
+            <!--</div>-->
+            <!--</th>-->
+            <th>
+                <div class="form-group form-group-sm ">
+                    <input ng-model="vouchers.voucherSearch.number"
+                           class="input input-sm form-control form-control-rounded search-input"
+                           st-search="number"/>
+                </div>
+            </th>
+            <th colspan="2">
+                <div class="form-group  ">
+                    <div class="input-group">
+
+                    <span class="input-group-addon">
+                    <i class="fa fa-calendar"></i>
+                    </span>
+                        <input class="form-control"
+                               format="YYYY-MM-DD"
+                               moment-picker="vouchers.voucherSearch.dd"
+                               ng-model="vouchers.voucherSearch.dd"
+                               name="date"
+                               placeholder="Select date"
+                               change="vouchers.dateSearchChanged(newValue)"
+
+                               ng-model-options="{ updateOn: 'blur' }">
+                        <span class="input-group-addon btn btn-danger"
+                              ng-click="vouchers.removeDateSearch()">
+                                          <i class="fa fa-close"
+                                          ></i>
+                        </span>
+                    </div>
+
+                </div>
+            </th>
+            <!--<th>-->
+            <!--&lt;!&ndash;<div class="form-group form-group-sm ">&ndash;&gt;-->
+            <!--&lt;!&ndash;<input ng-model="vouchers.voucherSearch.client_id"&ndash;&gt;-->
+            <!--&lt;!&ndash;class="input input-sm form-control form-control-rounded search-input"&ndash;&gt;-->
+            <!--&lt;!&ndash;st-search="client_id"/>&ndash;&gt;-->
+            <!--&lt;!&ndash;</div>&ndash;&gt;-->
+            <!--</th>-->
+            <th style="max-width: 20px;">
+                <div class="form-group form-group-sm ">
+                    <input type="number" ng-model="vouchers.voucherSearch.total_price"
+                           class="input input-sm form-control form-control-rounded search-input"
+                           st-search="total_price"/>
+                </div>
+            </th>
+            <th style="max-width: 20px;">
+                <div class="form-group form-group-sm ">
+                    <input ng-model="vouchers.voucherSearch.paid_price"
+                           class="input input-sm form-control form-control-rounded search-input"
+                           st-search="paid_price"/>
+                </div>
+            </th>
+            <th style="max-width: 20px;">
+                <div class="form-group form-group-sm ">
+                    <input type="number" ng-model="vouchers.voucherSearch.due_price"
+                           class="input input-sm form-control form-control-rounded search-input"
+                           st-search="due_price"/>
+                </div>
+            </th>
+            <th>
+                <div class="form-group jaSelect">
+
+                    <select
+                            class="form-control " title="All" data-style="btn-primary"
+                            data-container="body" ng-model="vouchers.voucherSearch.paymentStatus"
+                            ng-selectss="vouchers.paymentStatusList"
+                            dis=""
+                            selectpicker
+                            st-input-event="change"
+                            st-search="paymentStatus.id"
+                            ng-options="item.id as item.name for item in vouchers.paymentStatusList ">
+
+
+                    </select>
+                </div>
+            </th>
+            <th></th>
+            <th></th>
+            <th></th>
+          
+
+        </tr>
+        </thead>
+
+        <tbody ng-show="!vouchers.isLoading">
+        <tr ng-repeat="(key, row) in vouchers.displayed" class="editable-tr-wrap ">
+            <span ng-if="row.new" class="badge bg-info">new</span>
+            <!--<td>-->
+            <!--<div>-->
+            <!--<span>{{row.id || 'n/a'}}</span>-->
+            <!--</div>-->
+            <!--</td>-->
+            <td>
+                <div>
+                    <span>{{row.number || 'n/a'}}</span>
+                </div>
+            </td>
+
+            <td>
+                <div>
+                    <span>{{row.date || 'n/a'}}</span>
+                </div>
+            </td>
+            <td>
+                <div>
+                    <a href="/#!/clients/single/{{row.client.id}}">{{row.client.name|| 'n/a'}}</a>
+                </div>
+            </td>
+            <td style="max-width: 20px;">
+
+                <div class="popover-wrapper">
+                    <a href="" editable-number="row.total_price" e-required edit-disabled="true"
+                       onbeforesave="vouchers.update('total_price',row.id,$data)">
+                        {{row.total_price || 'n/a'}}
+                    </a>
+                </div>
+
+            </td>
+            <td style="max-width: 20px;">
+
+                <div class="popover-wrapper">
+                    <a href="" editable-number="row.paid_price" e-required edit-disabled="true"
+                       onbeforesave="vouchers.update('paid_price',row.id,$data)">
+                        {{row.paid_price || 'n/a'}}
+                    </a>
+                </div>
+
+            </td>
+            <td style="max-width: 20px;">
+
+                <div class="popover-wrapper">
+                    <a href="" editable-number="row.due_price" e-required edit-disabled="true"
+                       onbeforesave="vouchers.update('total_price',row.id,$data)">
+                        {{row.due_price || 'n/a'}}
+                    </a>
+                </div>
+
+            </td>
+            <td>
+
+                <div class="popover-wrapper">
+
+
+                    <a class="btn btn-{{(vouchers.paymentStatusList | filter:{id: row.payment_status.id})[0].name }}"
+                       href="" editable-select="row.payment_status.id" e-required edit-disabled="true"
+                       onbeforesave="vouchers.update('payment_status_id',row.id,$data,row.payment_status.id)"
+                       e-ng-options="s.id as s.name for s in vouchers.paymentStatusList">
+                        {{ (vouchers.paymentStatusList | filter:{id: row.payment_status.id})[0].name || 'n/a'}}
+
+                    </a>
+
+
+                </div>
+
+            </td>
+            <td>
+                <button class="btn btn-info  btn-xs" ng-click="vouchers.viewDetails(row)">
+                    <i class="fa fa-eye"></i> View
+                </button>
+
+            </td>
+            <td>
+                <div ng-if="row.payment_status_id!==3">
+                    <button class="btn btn-warning  btn-xs" ng-click="vouchers.addExpense(row,$index)"><i
+                            class="fa fa-dollar"></i> add <br>expense
+                    </button>
+                </div>
+            </td>
+          
+
+            <td>
+                <button class="btn btn-danger  btn-xs" disabled ng-click="vouchers.removeVoucher(row.id,$index)"><i
+                        class="fa fa-trash"></i> Delete
+                </button>
+
+            </td>
+
+
+        </tr>
+        </tbody>
+        <tbody ng-show="vouchers.isLoading">
+        <tr>
+            <td colspan="100%" class="text-center">Loading ...</td>
+        </tr>
+        </tbody>
+        <tbody ng-show="vouchers.noData">
+        <tr>
+            <td colspan="100%" class="text-center">no data found</td>
+        </tr>
+        </tbody>
+        <tfoot>
+        <tr>
+            <td class="text-center" st-pagination="" st-items-by-page="vouchers.smartTablePageSize" colspan="100%">
+            </td>
+        </tr>
+        </tfoot>
+    </table>
+
+
+</div>
